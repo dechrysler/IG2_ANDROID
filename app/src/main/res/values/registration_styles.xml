@@ -1,0 +1,49 @@
+<resources>
+    <style name="Theme.SaborDelHimalaya.Activation" parent="Theme.SaborDelHimalaya.Registration">
+        <item name="colorPrimary">@color/welcome_button</item>
+        <item name="android:colorAccent">@color/welcome_button</item>
+        <item name="android:windowBackground">@color/welcome_paper</item>
+    </style>
+    <style name="Theme.SaborDelHimalaya.Registration" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/welcome_button</item>
+        <item name="colorOnPrimary">@color/welcome_paper</item>
+        <item name="android:colorAccent">@color/welcome_button</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:windowBackground">@color/welcome_paper</item>
+    </style>
+    <style name="RegistrationLabel">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:textColor">@color/registration_text</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="RegistrationInput" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">24dp</item>
+        <item name="hintEnabled">false</item>
+        <item name="boxBackgroundColor">@color/welcome_paper</item>
+        <item name="boxStrokeColor">@color/registration_outline</item>
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="boxStrokeWidthFocused">2dp</item>
+        <item name="boxCornerRadiusTopStart">6dp</item>
+        <item name="boxCornerRadiusTopEnd">6dp</item>
+        <item name="boxCornerRadiusBottomStart">6dp</item>
+        <item name="boxCornerRadiusBottomEnd">6dp</item>
+    </style>
+    <style name="RegistrationEditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">52dp</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:textColor">@color/registration_text</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:imeOptions">actionNext</item>
+    </style>
+</resources>
+

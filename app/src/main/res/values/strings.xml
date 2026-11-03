@@ -1,0 +1,26 @@
+<resources>
+    <string name="login_title">Inicio de sesión</string>
+    <string name="login_username_label">Correo o usuario</string>
+    <string name="activation_brand">Sabor del Himalaya</string>
+    <string name="activation_title">Activa tu cuenta</string>
+    <string name="activation_description">Hemos enviado a tu correo un código para activar tu cuenta.</string>
+    <string name="activation_code_label">Código de activación</string>
+    <string name="activation_code_hint">Introduce el código</string>
+    <string name="activation_send">Enviar</string>
+    <string name="activation_not_received">¿No lo has recibido?</string>
+    <string name="activation_resend"><u>Reenviar código</u></string>
+    <string name="activation_pending">Pantalla de prueba: el envío y la verificación de códigos aún no están disponibles.</string>
+    <string name="app_name">SaborDelHimalaya</string>
+    <string name="welcome_title_first_line">Sabor del</string>
+    <string name="welcome_title_second_line">Himalaya</string>
+    <string name="action_login">Iniciar sesión</string>
+    <string name="action_register">Registrarse</string>
+    <string name="registration_title">Registro</string>
+    <string name="registration_name">Nombre</string>
+    <string name="registration_username">Nombre de usuario</string>
+    <string name="registration_email">Correo</string>
+    <string name="registration_password">Contraseña</string>
+    <string name="registration_address">Dirección</string>
+    <string name="action_cancel">Cancelar</string>
+    <string name="registration_pending">El registro de usuarios aún no está disponible.</string>
+</resources>

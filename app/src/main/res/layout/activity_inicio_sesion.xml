@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/welcome_paper"
+    tools:context=".controller.InicioSesion">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="24dp"
+            android:paddingBottom="32dp">
+            <ImageView
+                android:layout_width="240dp"
+                android:layout_height="88dp"
+                android:layout_gravity="center_horizontal"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_login_brand" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:text="@string/activation_brand"
+                android:textColor="@color/welcome_title"
+                android:textStyle="italic"
+                android:textSize="26sp"
+                android:maxLines="1"
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="16sp"
+                app:autoSizeMaxTextSize="26sp"
+                app:autoSizeStepGranularity="1sp" />
+            <TextView
+                android:id="@+id/login_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="28dp"
+                android:gravity="center"
+                android:accessibilityHeading="true"
+                android:text="@string/login_title"
+                android:textSize="34sp"
+                android:textStyle="bold"
+                android:textColor="@color/welcome_title" />
+            <TextView
+                style="@style/RegistrationLabel"
+                android:labelFor="@+id/login_username"
+                android:text="@string/login_username_label"
+                android:textColor="@color/welcome_title" />
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/RegistrationInput">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@id/login_username"
+                    style="@style/RegistrationEditText"
+                    android:inputType="text"
+                    android:autofillHints="username"
+                    android:textColor="@color/welcome_title" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                style="@style/RegistrationLabel"
+                android:labelFor="@+id/login_password"
+                android:text="@string/registration_password"
+                android:textColor="@color/welcome_title" />
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/RegistrationInput"
+                app:endIconMode="password_toggle"
+                app:endIconTint="@color/welcome_title">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@id/login_password"
+                    style="@style/RegistrationEditText"
+                    android:inputType="textPassword"
+                    android:autofillHints="password"
+                    android:imeOptions="actionDone"
+                    android:textColor="@color/welcome_title" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_submit_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:minHeight="56dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="@string/action_login"
+                android:textAllCaps="false"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/welcome_paper"
+                app:backgroundTint="@color/welcome_button"
+                app:cornerRadius="10dp" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_cancel_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:minHeight="56dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="@string/action_cancel"
+                android:textAllCaps="false"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/welcome_title"
+                app:backgroundTint="@android:color/transparent"
+                app:strokeColor="@color/welcome_title"
+                app:strokeWidth="2dp"
+                app:cornerRadius="10dp" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</FrameLayout>
