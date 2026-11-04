@@ -12,6 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SaborDelHimalaya">
         <activity
+            android:name=".controller.Pedidos"
+            android:theme="@style/Theme.SaborDelHimalaya.Carta"
+            android:exported="false" />
+        <activity
+            android:name=".controller.Cesta"
+            android:theme="@style/Theme.SaborDelHimalaya.Carta"
+            android:exported="false" />
+        <activity
+            android:name=".controller.Principal2"
+            android:theme="@style/Theme.SaborDelHimalaya.Carta"
+            android:exported="false" />
+        <activity
             android:name=".controller.InicioSesion"
             android:theme="@style/Theme.SaborDelHimalaya.Registration"
             android:exported="false"

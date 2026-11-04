@@ -1,4 +1,14 @@
 <resources>
+    <string name="orders_empty_title">Aún no tiene pedidos</string>
+    <string name="basket_empty_title">Añade artículos a tu pedido</string>
+    <string name="category_starters">Entrantes</string>
+    <string name="category_daily">Menú diario</string>
+    <string name="category_salads">Ensaladas</string>
+    <string name="category_momos">Momos</string>
+    <string name="category_tandoori">Tandoori</string>
+    <string name="nav_orders">Pedidos</string>
+    <string name="nav_menu">Carta</string>
+    <string name="nav_basket">Cesta</string>
     <string name="login_title">Inicio de sesión</string>
     <string name="login_username_label">Correo o usuario</string>
     <string name="activation_brand">Sabor del Himalaya</string>

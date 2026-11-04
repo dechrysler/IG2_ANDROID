@@ -1,0 +1,13 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="192dp" android:height="192dp"
+    android:viewportWidth="192" android:viewportHeight="192">
+    <path android:fillColor="#FFF1EB" android:pathData="M96,0 A96,96 0,1 1,95.99 0 Z" />
+    <path android:fillColor="@android:color/transparent" android:strokeColor="#B94018"
+        android:strokeWidth="2" android:strokeLineCap="round" android:strokeLineJoin="round"
+        android:pathData="M115,65 L129,50 L134,53 L147,35 L160,53 L165,50 L179,65 M135,52 L143,45 L141,53 L146,48 L149,57 L150,48 L159,54 M124,58 L129,53 L131,56 M160,56 L165,53 L170,58" />
+    <path android:fillColor="#B94018"
+        android:pathData="M161,68 A1.5,1.5 0,1 1,160.99 68 Z M157,72 A1.5,1.5 0,1 1,156.99 72 Z M151,75 A1.5,1.5 0,1 1,150.99 75 Z M144,78 A1.5,1.5 0,1 1,143.99 78 Z M136,80 A1.5,1.5 0,1 1,135.99 80 Z M128,83 A1.5,1.5 0,1 1,127.99 83 Z M123,88 A1.5,1.5 0,1 1,122.99 88 Z M122,94 A2,2 0,1 1,121.99 94 Z M127,101 A2,2 0,1 1,126.99 101 Z M135,106 A2,2 0,1 1,134.99 106 Z M143,111 A2,2 0,1 1,142.99 111 Z M150,117 A2.5,2.5 0,1 1,149.99 117 Z M153,125 A2.5,2.5 0,1 1,152.99 125 Z M150,134 A2.5,2.5 0,1 1,149.99 134 Z M143,141 A3,3 0,1 1,142.99 141 Z M134,147 A3,3 0,1 1,133.99 147 Z M124,151 A3,3 0,1 1,123.99 151 Z M114,154 A3,3 0,1 1,113.99 154 Z" />
+    <path android:fillColor="@android:color/transparent" android:strokeColor="#98431E"
+        android:strokeWidth="2.5" android:strokeLineCap="round" android:strokeLineJoin="round"
+        android:pathData="M23,161 L101,161 M38,143 A9,9 0,1 1,37.99 143 Z M88,143 A9,9 0,1 1,87.99 143 Z M28,149 Q25,136 36,132 Q50,129 53,145 L67,145 Q77,145 77,131 L71,113 L67,111 L68,106 L74,106 L80,127 L86,139 M26,132 L31,123 L61,123 Q53,131 58,141 Q62,146 69,141 M29,123 L58,123 Q64,123 63,128 L28,128 M77,117 L84,115 L85,122 L80,124 M87,146 Q93,132 102,145 Z M22,103 Q22,98 28,98 L49,98 Q55,98 55,104 L55,118 L22,118 Z M34,114 Q27,108 30,105 Q36,105 38,113 Q38,106 42,103 Q46,109 42,114 Q49,108 50,111 Q46,117 38,116 Z M94,113 L99,109 M96,119 L102,119 M95,125 L100,129" />
+</vector>

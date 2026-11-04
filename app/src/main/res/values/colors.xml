@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources><color name="welcome_paper">#F5E8D5</color>
     <color name="welcome_title">#7B260D</color>
+    <color name="carta_accent">#B94018</color>
+    <color name="carta_border">#CCCCCC</color>
     <color name="welcome_button">#8E321E</color>
     <color name="registration_text">#252525</color>
     <color name="black">#FF000000</color>
