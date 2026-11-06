@@ -50,7 +50,7 @@
         android:background="@drawable/bg_badge_cancel"
         android:paddingHorizontal="8dp"
         android:paddingVertical="4dp"
-        android:textColor="#A93226"
+        android:textColor="@color/danger"
         android:textSize="13sp"
         android:textStyle="bold"
         android:visibility="gone" />

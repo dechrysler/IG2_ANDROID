@@ -33,6 +33,8 @@ public final class Principal2View {
     public interface Listener {
         void onAddPlato(Plato plato);
 
+        void onPlatoClick(Plato plato);
+
         void onAddMenu(Menu menu);
 
         void onMenuClick(Menu menu);
@@ -202,6 +204,7 @@ public final class Principal2View {
             cargarImagen(item.findViewById(R.id.dish_image), plato.getImagenUrl());
             item.findViewById(R.id.button_add_dish)
                     .setOnClickListener(view -> listener.onAddPlato(plato));
+            item.setOnClickListener(view -> listener.onPlatoClick(plato));
             container.addView(item);
         }
     }
@@ -246,7 +249,6 @@ public final class Principal2View {
         cargarImagen(item.findViewById(R.id.menu_image), imagen);
         item.findViewById(R.id.button_add_menu)
                 .setOnClickListener(view -> listener.onAddMenu(menu));
-        item.findViewById(R.id.button_view_menu).setOnClickListener(view -> listener.onMenuClick(menu));
         item.setOnClickListener(view -> listener.onMenuClick(menu));
         dailyContent.addView(item);
     }

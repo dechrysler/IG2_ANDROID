@@ -181,6 +181,19 @@ public class Principal2 extends BaseActivity implements Principal2View.Listener 
     }
 
     @Override
+    public void onPlatoClick(Plato plato) {
+        Intent intent = new Intent(this, PlatoDetalle.class);
+        intent.putExtra(PlatoDetalle.EXTRA_ID, plato.getId());
+        intent.putExtra(PlatoDetalle.EXTRA_NOMBRE, plato.getNombre());
+        intent.putExtra(PlatoDetalle.EXTRA_DESCRIPCION, plato.getDescripcion());
+        intent.putExtra(PlatoDetalle.EXTRA_IMAGEN, plato.getImagenUrl());
+        intent.putExtra(PlatoDetalle.EXTRA_PRECIO,
+                plato.getPrecio() == null ? null : plato.getPrecio().toPlainString());
+        intent.putExtra(PlatoDetalle.EXTRA_CATEGORIA, plato.getCategoriaNombre());
+        startActivity(intent);
+    }
+
+    @Override
     public void onAddMenu(Menu menu) {
         cart.addMenu(menu);
         showMessage(getString(R.string.carta_added, menu.getNombre()));

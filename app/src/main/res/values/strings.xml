@@ -152,6 +152,9 @@
     <string name="menu_detail_price">Precio del menú</string>
     <string name="menu_detail_unavailable">Este menú ya no está disponible.</string>
     <string name="menu_detail_added">Menú añadido a la cesta.</string>
+    <string name="plato_detail_title">Detalle del plato</string>
+    <string name="plato_add_total">Añadir %1$d · %2$s</string>
+    <string name="plato_added">Producto añadido a la cesta.</string>
 
     <!-- Perfil -->
     <string name="carta_profile">Perfil</string>

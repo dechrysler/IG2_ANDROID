@@ -16,7 +16,6 @@ import com.example.sabordelhimalaya.model.Menu;
 import com.example.sabordelhimalaya.model.Plato;
 import com.example.sabordelhimalaya.util.Formatters;
 import com.example.sabordelhimalaya.util.ImageUrls;
-import com.google.android.material.button.MaterialButton;
 
 import java.util.List;
 
@@ -140,8 +139,6 @@ public final class MenusView {
             }
 
             card.setOnClickListener(view -> listener.onMenuClick(menu));
-            ((MaterialButton) card.findViewById(R.id.button_menu_card_view))
-                    .setOnClickListener(view -> listener.onMenuClick(menu));
             card.findViewById(R.id.button_menu_card_add)
                     .setOnClickListener(view -> listener.onAddMenu(menu));
             list.addView(card);

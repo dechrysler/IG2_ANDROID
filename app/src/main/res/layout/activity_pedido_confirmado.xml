@@ -5,7 +5,7 @@
     android:id="@+id/success_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/welcome_paper"
     android:orientation="vertical"
     tools:context=".controller.PedidoConfirmado">
 
@@ -128,7 +128,7 @@
                 android:textStyle="bold"
                 android:textColor="@color/welcome_paper"
                 app:backgroundTint="@color/welcome_button"
-                app:cornerRadius="10dp" />
+                app:cornerRadius="27dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_success_continue"
@@ -144,7 +144,7 @@
                 android:textStyle="bold"
                 android:textColor="@color/welcome_title"
                 app:backgroundTint="@android:color/transparent"
-                app:cornerRadius="10dp"
+                app:cornerRadius="27dp"
                 app:strokeColor="@color/welcome_button"
                 app:strokeWidth="2dp" />
         </LinearLayout>

@@ -6,35 +6,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/white"
+    android:background="@color/welcome_paper"
     tools:context=".controller.Cesta">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingTop="12dp"
-        android:paddingBottom="12dp">
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="10dp">
+
         <ImageView
-            android:layout_width="64dp"
+            android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_gravity="center_horizontal"
             android:importantForAccessibility="no"
-            android:src="@drawable/ic_carta_lotus" />
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginHorizontal="16dp"
+            android:src="@drawable/ic_brand_web" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
             android:fontFamily="serif"
-            android:gravity="center"
-            android:maxLines="1"
-            android:text="@string/activation_brand"
+            android:text="@string/basket_title"
             android:textColor="@color/welcome_title"
-            android:textSize="32sp"
-            app:autoSizeTextType="uniform"
-            app:autoSizeMinTextSize="16sp"
-            app:autoSizeMaxTextSize="32sp"
-            app:autoSizeStepGranularity="1sp" />
+            android:textSize="22sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -194,7 +193,7 @@
         android:id="@+id/checkout_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/welcome_paper"
+        android:background="@color/white"
         android:orientation="vertical"
         android:paddingHorizontal="16dp"
         android:paddingTop="12dp"
@@ -256,7 +255,7 @@
             android:textStyle="bold"
             android:textColor="@color/welcome_paper"
             app:backgroundTint="@color/welcome_button"
-            app:cornerRadius="10dp" />
+            app:cornerRadius="27dp" />
     </LinearLayout>
 
     <View

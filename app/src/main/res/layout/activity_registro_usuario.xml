@@ -15,10 +15,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@drawable/carta_card"
         android:orientation="vertical"
-        android:paddingHorizontal="16dp"
-        android:paddingTop="32dp"
-        android:paddingBottom="32dp">
+        android:paddingHorizontal="20dp"
+        android:paddingTop="24dp"
+        android:paddingBottom="24dp">
         <TextView
             android:id="@+id/registration_title"
             android:layout_width="match_parent"
@@ -127,38 +129,32 @@
             android:baselineAligned="false">
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_cancel_registration"
+                style="@style/Widget.Material3.Button.TextButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginEnd="6dp"
-                android:minHeight="56dp"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
+                android:minHeight="48dp"
                 android:text="@string/action_cancel"
                 android:textAllCaps="false"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/welcome_button"
-                app:backgroundTint="@color/welcome_paper"
-                app:strokeColor="@color/welcome_button"
-                app:strokeWidth="2dp"
-                app:cornerRadius="8dp" />
+                android:textSize="15sp"
+                android:textColor="@color/welcome_title" />
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_submit_registration"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginStart="6dp"
-                android:minHeight="56dp"
+                android:minHeight="52dp"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 android:text="@string/action_register"
                 android:textAllCaps="false"
-                android:textSize="18sp"
+                android:textSize="15sp"
                 android:textStyle="bold"
                 android:textColor="@color/welcome_paper"
                 app:backgroundTint="@color/welcome_button"
-                app:cornerRadius="8dp" />
+                app:cornerRadius="26dp" />
         </LinearLayout>
     </LinearLayout>
     </androidx.core.widget.NestedScrollView>

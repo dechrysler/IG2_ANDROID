@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources><color name="welcome_paper">#F5E8D5</color>
-    <color name="welcome_title">#7B260D</color>
-    <color name="carta_accent">#B94018</color>
-    <color name="carta_border">#CCCCCC</color>
-    <color name="welcome_button">#8E321E</color>
-    <color name="registration_text">#252525</color>
+<resources>
+    <!-- Paleta basada en Frontend-Restaurant-IS2/src/styles/tokens.css -->
+    <color name="welcome_paper">#FFFAF3</color>
+    <color name="welcome_title">#241C18</color>
+    <color name="carta_accent">#9A3412</color>
+    <color name="carta_border">#E8DCCF</color>
+    <color name="welcome_button">#9A3412</color>
+    <color name="registration_text">#6F6259</color>
+
+    <color name="brand_dark">#2B1B14</color>
+    <color name="brand_deep">#7C2D12</color>
+    <color name="primary_hover">#7C2D12</color>
+    <color name="primary_soft">#FBE7DA</color>
+    <color name="surface_alt">#FFF3E2</color>
+    <color name="accent">#F59E0B</color>
+    <color name="accent_soft">#FDE68A</color>
+    <color name="success">#15803D</color>
+    <color name="success_soft">#DCFCE7</color>
+    <color name="danger">#B91C1C</color>
+    <color name="danger_soft">#FEE2E2</color>
+
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>
-

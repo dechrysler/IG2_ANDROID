@@ -14,17 +14,20 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@drawable/carta_card"
             android:orientation="vertical"
-            android:paddingHorizontal="16dp"
-            android:paddingTop="32dp"
-            android:paddingBottom="40dp">
+            android:paddingHorizontal="20dp"
+            android:paddingTop="24dp"
+            android:paddingBottom="28dp">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:fontFamily="serif"
                 android:text="@string/activation_brand"
                 android:textColor="@color/welcome_title"
-                android:textSize="30sp"
+                android:textSize="26sp"
                 android:textStyle="bold" />
             <ImageView
                 android:layout_width="128dp"
@@ -99,11 +102,11 @@
                 android:insetBottom="0dp"
                 android:text="@string/activation_send"
                 android:textAllCaps="false"
-                android:textSize="22sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="@color/welcome_paper"
                 app:backgroundTint="@color/welcome_button"
-                app:cornerRadius="8dp" />
+                app:cornerRadius="27dp" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

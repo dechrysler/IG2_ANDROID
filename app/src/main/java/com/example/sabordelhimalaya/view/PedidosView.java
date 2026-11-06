@@ -146,10 +146,10 @@ public final class PedidosView {
 
     private int colorEstado(String estado) {
         if ("LISTO".equals(estado) || "ENTREGADO".equals(estado)) {
-            return Color.parseColor("#1E7B34");
+            return content.getResources().getColor(R.color.success, null);
         }
         if ("EN_PREPARACION".equals(estado)) {
-            return Color.parseColor("#B9770E");
+            return content.getResources().getColor(R.color.accent, null);
         }
         return content.getResources().getColor(R.color.welcome_title, null);
     }
