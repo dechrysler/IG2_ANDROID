@@ -16,6 +16,22 @@
         android:theme="@style/Theme.SaborDelHimalaya"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".controller.PedidoConfirmado"
+            android:theme="@style/Theme.SaborDelHimalaya.Carta"
+            android:exported="false" />
+        <activity
+            android:name=".controller.MenuDetalle"
+            android:theme="@style/Theme.SaborDelHimalaya.Carta"
+            android:exported="false" />
+        <activity
+            android:name=".controller.Menus"
+            android:theme="@style/Theme.SaborDelHimalaya.Carta"
+            android:exported="false" />
+        <activity
+            android:name=".controller.Perfil"
+            android:theme="@style/Theme.SaborDelHimalaya.Carta"
+            android:exported="false" />
+        <activity
             android:name=".controller.DetallePedido"
             android:theme="@style/Theme.SaborDelHimalaya.Carta"
             android:exported="false" />

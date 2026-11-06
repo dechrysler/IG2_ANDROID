@@ -40,14 +40,14 @@
                 app:autoSizeStepGranularity="1sp" />
         </LinearLayout>
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_logout"
+            android:id="@+id/button_profile"
             style="@style/Widget.Material3.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="top|end"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:text="@string/carta_logout"
+            android:text="@string/carta_profile"
             android:textAllCaps="false"
             android:textColor="@color/welcome_title"
             android:textSize="14sp" />
@@ -95,6 +95,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_all_menus"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/menus_all"
+                android:textAllCaps="false"
+                android:textColor="@color/carta_accent"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:id="@+id/carta_state"

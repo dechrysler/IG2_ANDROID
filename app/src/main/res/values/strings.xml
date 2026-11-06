@@ -130,4 +130,56 @@
     <string name="detail_step_preparing">En preparación</string>
     <string name="detail_step_ready">Listo</string>
     <string name="detail_step_delivered">Entregado</string>
+
+    <!-- Menús -->
+    <string name="menus_title">Menús</string>
+    <string name="menus_subtitle">Elige el menú que más te apetezca</string>
+    <string name="menus_loading">Cargando menús…</string>
+    <string name="menus_error">No se han podido cargar los menús.</string>
+    <string name="menus_empty">No hay menús disponibles ahora mismo.</string>
+    <string name="menus_empty_action">Volver a la carta</string>
+    <string name="menus_view">Ver menú</string>
+    <string name="menus_add">Añadir menú</string>
+    <string name="menus_daily_badge">Menú del día</string>
+    <string name="menus_all">Ver todos los menús</string>
+    <string name="menus_products_count">%1$d productos</string>
+    <string name="menu_detail_title">Detalle del menú</string>
+    <string name="menu_detail_loading">Cargando menú…</string>
+    <string name="menu_detail_error">No se ha podido cargar el menú.</string>
+    <string name="menu_detail_products">Productos incluidos</string>
+    <string name="menu_detail_quantity">Cantidad</string>
+    <string name="menu_detail_add">Añadir %1$d a la cesta</string>
+    <string name="menu_detail_price">Precio del menú</string>
+    <string name="menu_detail_unavailable">Este menú ya no está disponible.</string>
+    <string name="menu_detail_added">Menú añadido a la cesta.</string>
+
+    <!-- Perfil -->
+    <string name="carta_profile">Perfil</string>
+    <string name="profile_title">Mi perfil</string>
+    <string name="profile_role">Cliente</string>
+    <string name="profile_login">Usuario</string>
+    <string name="profile_email">Correo electrónico</string>
+    <string name="profile_address">Dirección de entrega</string>
+    <string name="profile_address_empty">No tienes una dirección guardada.</string>
+    <string name="profile_logout">Cerrar sesión</string>
+    <string name="profile_back">Volver a la carta</string>
+    <string name="profile_logout_confirm">¿Seguro que quieres cerrar la sesión?</string>
+
+    <!-- Confirmación de pedido -->
+    <string name="order_success_title">¡Pedido confirmado!</string>
+    <string name="order_success_updated">Pedido actualizado</string>
+    <string name="order_success_message">Hemos recibido tu pedido y ya estamos preparándolo.</string>
+    <string name="order_success_updated_message">Los cambios se han guardado correctamente.</string>
+    <string name="order_success_number">Número de pedido</string>
+    <string name="order_success_total">Total</string>
+    <string name="order_success_address">Entrega en</string>
+    <string name="order_success_tracking">Ver seguimiento</string>
+    <string name="order_success_continue">Seguir pidiendo</string>
+
+    <!-- Barra de pago de la cesta -->
+    <string name="basket_checkout_estimated">Total estimado</string>
+    <string name="basket_checkout_server">Total del pedido</string>
+    <string name="basket_edit_cart">Editar cesta</string>
+    <string name="basket_processing">Procesando…</string>
+    <string name="basket_reviewing">Revisando…</string>
 </resources>

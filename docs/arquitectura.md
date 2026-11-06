@@ -61,3 +61,16 @@ emulador. MainActivity lo solicita al arrancar.
 - Ante un `401` se borra la sesión y se vuelve al login.
 - Solo se acepta el rol `CLIENTE`; los tokens de `CHEF` o `ENCARGADO` no se
   guardan y la app muestra el mensaje de que es solo para clientes.
+
+### Pantallas añadidas
+
+- **Menús**: lista de todos los menús públicos disponibles
+  (`GET /menu/available`), con acceso al detalle y añadido rápido a la cesta.
+- **Detalle de menú**: productos incluidos, precio, selector de cantidad y
+  añadido de varias unidades (`GET /menu/{id}`).
+- **Perfil**: datos de la sesión, dirección y cierre de sesión.
+- **Pedido confirmado**: resumen tras crear o modificar un pedido, con acceso
+  al seguimiento.
+- **Cesta renovada**: barra inferior fija con un único botón que alterna entre
+  “Revisar pedido” y “Confirmar pedido”, evitando dos botones apilados.
+

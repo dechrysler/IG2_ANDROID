@@ -6,6 +6,7 @@ import com.example.sabordelhimalaya.model.dto.CategoryResponse;
 import com.example.sabordelhimalaya.model.dto.CreateOrderRequest;
 import com.example.sabordelhimalaya.model.dto.DishResponse;
 import com.example.sabordelhimalaya.model.dto.LoginRequest;
+import com.example.sabordelhimalaya.model.dto.MenuResponse;
 import com.example.sabordelhimalaya.model.dto.OrderPreviewResponse;
 import com.example.sabordelhimalaya.model.dto.OrderResponse;
 import com.example.sabordelhimalaya.model.dto.RegisterRequest;
@@ -50,6 +51,12 @@ public interface ApiService {
 
     @GET("menu/today")
     Call<TodayMenuResponse> todayMenu();
+
+    @GET("menu/available")
+    Call<List<MenuResponse>> availableMenus();
+
+    @GET("menu/{id}")
+    Call<MenuResponse> menu(@Path("id") String id);
 
     @POST("orders/preview")
     Call<OrderPreviewResponse> preview(@Body CreateOrderRequest body);

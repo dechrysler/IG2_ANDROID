@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.SystemBarStyle;
-import androidx.appcompat.app.AlertDialog;
 
 import com.example.sabordelhimalaya.R;
 import com.example.sabordelhimalaya.model.CartRepository;
@@ -42,7 +41,8 @@ public class Principal2 extends BaseActivity implements Principal2View.Listener 
         view.initialize(
                 () -> startActivity(new Intent(this, Cesta.class)),
                 () -> startActivity(new Intent(this, Pedidos.class)),
-                this::confirmarLogout);
+                () -> startActivity(new Intent(this, Perfil.class)),
+                () -> startActivity(new Intent(this, Menus.class)));
     }
 
     @Override
@@ -186,16 +186,11 @@ public class Principal2 extends BaseActivity implements Principal2View.Listener 
         showMessage(getString(R.string.carta_added, menu.getNombre()));
     }
 
-    private void confirmarLogout() {
-        new AlertDialog.Builder(this)
-                .setTitle(R.string.action_logout)
-                .setMessage(R.string.logout_confirm)
-                .setPositiveButton(R.string.action_logout, (dialog, which) -> {
-                    cart.clear();
-                    session().clear();
-                    goToLogin();
-                })
-                .setNegativeButton(R.string.action_cancel, null)
-                .show();
+    @Override
+    public void onMenuClick(Menu menu) {
+        Intent intent = new Intent(this, MenuDetalle.class);
+        intent.putExtra(MenuDetalle.EXTRA_MENU_ID, menu.getId());
+        intent.putExtra(MenuDetalle.EXTRA_MENU_NAME, menu.getNombre());
+        startActivity(intent);
     }
 }

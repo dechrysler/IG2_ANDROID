@@ -34,6 +34,8 @@ public final class Principal2View {
         void onAddPlato(Plato plato);
 
         void onAddMenu(Menu menu);
+
+        void onMenuClick(Menu menu);
     }
 
     private final View content;
@@ -58,7 +60,8 @@ public final class Principal2View {
         this.inflater = LayoutInflater.from(content.getContext());
     }
 
-    public void initialize(Runnable onCestaClick, Runnable onPedidosClick, Runnable onLogoutClick) {
+    public void initialize(Runnable onCestaClick, Runnable onPedidosClick,
+                           Runnable onProfileClick, Runnable onAllMenusClick) {
         ViewCompat.setOnApplyWindowInsetsListener(content, (view, windowInsets) -> {
             Insets safe = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars()
                     | WindowInsetsCompat.Type.displayCutout());
@@ -84,7 +87,8 @@ public final class Principal2View {
                 retryAction.run();
             }
         });
-        content.findViewById(R.id.button_logout).setOnClickListener(view -> onLogoutClick.run());
+        content.findViewById(R.id.button_profile).setOnClickListener(view -> onProfileClick.run());
+        content.findViewById(R.id.button_all_menus).setOnClickListener(view -> onAllMenusClick.run());
 
         BottomNavigationView navigation = content.findViewById(R.id.principal_navigation);
         navigation.setItemActiveIndicatorEnabled(false);
@@ -242,6 +246,8 @@ public final class Principal2View {
         cargarImagen(item.findViewById(R.id.menu_image), imagen);
         item.findViewById(R.id.button_add_menu)
                 .setOnClickListener(view -> listener.onAddMenu(menu));
+        item.findViewById(R.id.button_view_menu).setOnClickListener(view -> listener.onMenuClick(menu));
+        item.setOnClickListener(view -> listener.onMenuClick(menu));
         dailyContent.addView(item);
     }
 

@@ -42,17 +42,21 @@ public final class CestaView {
     private View form;
     private LinearLayout itemsContainer;
     private TextView units;
-    private TextView subtotal;
     private TextInputEditText address;
     private TextInputLayout addressContainer;
     private View previewCard;
     private LinearLayout previewItems;
     private TextView serverTotal;
-    private MaterialButton reviewButton;
-    private MaterialButton confirmButton;
+    private View checkoutBar;
+    private TextView checkoutLabel;
+    private TextView checkoutTotal;
+    private MaterialButton checkoutButton;
+    private MaterialButton editButton;
     private TextView title;
 
     private boolean suprimirCambioDireccion;
+    private boolean busy;
+    private String previewTotal = "";
 
     public CestaView(View content, Listener listener) {
         this.content = content;
@@ -73,18 +77,30 @@ public final class CestaView {
         form = content.findViewById(R.id.basket_form);
         itemsContainer = content.findViewById(R.id.basket_items);
         units = content.findViewById(R.id.basket_units);
-        subtotal = content.findViewById(R.id.basket_subtotal);
         address = content.findViewById(R.id.basket_address);
         addressContainer = content.findViewById(R.id.basket_address_container);
         previewCard = content.findViewById(R.id.basket_preview_card);
         previewItems = content.findViewById(R.id.basket_preview_items);
         serverTotal = content.findViewById(R.id.basket_server_total);
-        reviewButton = content.findViewById(R.id.button_review_order);
-        confirmButton = content.findViewById(R.id.button_confirm_order);
+        checkoutBar = content.findViewById(R.id.checkout_bar);
+        checkoutLabel = content.findViewById(R.id.checkout_label);
+        checkoutTotal = content.findViewById(R.id.checkout_total);
+        checkoutButton = content.findViewById(R.id.button_checkout_order);
+        editButton = content.findViewById(R.id.button_edit_cart);
         title = content.findViewById(R.id.basket_title);
 
-        reviewButton.setOnClickListener(view -> listener.onReview());
-        confirmButton.setOnClickListener(view -> listener.onConfirm());
+        checkoutButton.setOnClickListener(view -> {
+            if (isPreviewVisible()) {
+                listener.onConfirm();
+            } else {
+                listener.onReview();
+            }
+        });
+        editButton.setOnClickListener(view -> {
+            clearPreview();
+            ((androidx.core.widget.NestedScrollView) content.findViewById(R.id.basket_scroll))
+                    .smoothScrollTo(0, 0);
+        });
 
         address.addTextChangedListener(new TextWatcher() {
             @Override
@@ -143,6 +159,7 @@ public final class CestaView {
         boolean vacia = cart.isEmpty();
         emptyState.setVisibility(vacia ? View.VISIBLE : View.GONE);
         form.setVisibility(vacia ? View.GONE : View.VISIBLE);
+        checkoutBar.setVisibility(vacia ? View.GONE : View.VISIBLE);
         if (vacia) {
             clearPreview();
             return;
@@ -150,9 +167,7 @@ public final class CestaView {
 
         boolean editando = cart.getEditingOrderId() != null;
         title.setText(editando ? R.string.basket_edit_title : R.string.basket_title);
-        confirmButton.setText(editando ? R.string.basket_save_changes : R.string.basket_confirm);
         units.setText(content.getContext().getString(R.string.basket_units, cart.totalUnidades()));
-        subtotal.setText(Formatters.money(cart.subtotal()));
 
         itemsContainer.removeAllViews();
         List<CartRepository.CartItem> items = cart.getItems();
@@ -193,6 +208,7 @@ public final class CestaView {
             });
             itemsContainer.addView(row);
         }
+        actualizarBarra();
     }
 
     public void showPreview(OrderPreviewResponse preview) {
@@ -211,30 +227,67 @@ public final class CestaView {
                 previewItems.addView(linea);
             }
         }
-        serverTotal.setText(Formatters.money(preview.importeTotal));
+        previewTotal = Formatters.money(preview.importeTotal);
+        serverTotal.setText(previewTotal);
         previewCard.setVisibility(View.VISIBLE);
-        confirmButton.setEnabled(true);
-        confirmButton.setAlpha(1f);
+        actualizarBarra();
     }
 
     public void clearPreview() {
         previewCard.setVisibility(View.GONE);
         previewItems.removeAllViews();
         serverTotal.setText("");
-        confirmButton.setEnabled(false);
-        confirmButton.setAlpha(0.5f);
+        previewTotal = "";
+        actualizarBarra();
     }
 
     public void setBusy(boolean busy) {
-        reviewButton.setEnabled(!busy);
-        reviewButton.setAlpha(busy ? 0.6f : 1f);
+        this.busy = busy;
         if (busy) {
-            confirmButton.setEnabled(false);
-            confirmButton.setAlpha(0.6f);
+            checkoutButton.setEnabled(false);
+            checkoutButton.setText(R.string.basket_processing);
+            checkoutButton.setAlpha(0.7f);
+            editButton.setEnabled(false);
         } else {
-            boolean preview = isPreviewVisible();
-            confirmButton.setEnabled(preview);
-            confirmButton.setAlpha(preview ? 1f : 0.5f);
+            actualizarBarra();
         }
+    }
+
+    private void actualizarBarra() {
+        if (checkoutBar == null) {
+            return;
+        }
+        boolean vacia = cart.isEmpty();
+        if (vacia) {
+            checkoutBar.setVisibility(View.GONE);
+            return;
+        }
+        checkoutBar.setVisibility(View.VISIBLE);
+        boolean preview = isPreviewVisible();
+        boolean editando = cart.getEditingOrderId() != null;
+
+        checkoutLabel.setText(preview
+                ? R.string.basket_checkout_server
+                : R.string.basket_checkout_estimated);
+        checkoutTotal.setText(preview ? previewTotal : Formatters.money(cart.subtotal()));
+
+        if (busy) {
+            checkoutButton.setEnabled(false);
+            checkoutButton.setText(R.string.basket_processing);
+            checkoutButton.setAlpha(0.7f);
+            return;
+        }
+
+        checkoutButton.setEnabled(true);
+        checkoutButton.setAlpha(1f);
+        if (preview) {
+            checkoutButton.setText(editando
+                    ? R.string.basket_save_changes
+                    : R.string.basket_confirm);
+        } else {
+            checkoutButton.setText(R.string.basket_review);
+        }
+        editButton.setVisibility(preview ? View.VISIBLE : View.GONE);
+        editButton.setEnabled(true);
     }
 }

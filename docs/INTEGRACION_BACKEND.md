@@ -663,6 +663,37 @@ Reglas:
 - Solo hay un menú del día por fecha y caduca al terminar el día.
 - El cliente puede pedir el menú completo con `menuId` y una cantidad.
 
+### 7.3.1 `GET /menu/available`
+
+Devuelve todos los menús públicos disponibles, incluido el menú del día. Es la
+ruta que usa la app para la pantalla **Menús**, donde el cliente puede elegir
+entre varios menús y no solo el del día.
+
+**Response `200`:** array de `MenuResponse`, con `productos` filtrados a los
+disponibles. El backend ordena por fecha de creación descendente.
+
+```json
+[
+  {
+    "id": "uuid-menu",
+    "nombre": "Menú degustación",
+    "descripcion": "Entrante, momos, curry y postre",
+    "productos": [],
+    "precio": 24.9,
+    "precioPersonalizado": 24.9,
+    "disponible": true,
+    "esMenuDelDia": false,
+    "fechaMenuDelDia": null,
+    "creadoEn": "2026-11-06T12:00:00"
+  }
+]
+```
+
+### 7.3.2 `GET /menu/{id}`
+
+Detalle público de un menú disponible. Se usa en la pantalla de detalle del
+menú. Si el menú no existe o está oculto, responde `404 NO_ENCONTRADO`.
+
 ### 7.4 Imágenes
 
 - Usar Glide/Picasso/Coil para cargar `imagenUrl` construida con la base.

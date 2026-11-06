@@ -142,8 +142,13 @@ public class Cesta extends BaseActivity implements CestaView.Listener {
                             ? getString(R.string.basket_updated)
                             : getString(R.string.basket_created, pedido.numeroPedido);
                     showMessage(mensaje);
-                    Intent intent = new Intent(Cesta.this, DetallePedido.class);
-                    intent.putExtra(DetallePedido.EXTRA_PEDIDO_ID, pedido.id);
+                    Intent intent = new Intent(Cesta.this, PedidoConfirmado.class);
+                    intent.putExtra(PedidoConfirmado.EXTRA_ORDER_ID, pedido.id);
+                    intent.putExtra(PedidoConfirmado.EXTRA_ORDER_NUMBER, pedido.numeroPedido);
+                    intent.putExtra(PedidoConfirmado.EXTRA_TOTAL,
+                            pedido.importeTotal == null ? null : pedido.importeTotal.toPlainString());
+                    intent.putExtra(PedidoConfirmado.EXTRA_ADDRESS, pedido.direccionEntrega);
+                    intent.putExtra(PedidoConfirmado.EXTRA_UPDATED, editingId != null);
                     startActivity(intent);
                     finish();
                     return;
