@@ -74,12 +74,34 @@
                 android:id="@+id/daily_title"
                 style="@style/CartaSectionTitle"
                 android:text="@string/category_daily" />
-            <FrameLayout
+            <LinearLayout
                 android:id="@+id/daily_content"
                 android:layout_width="match_parent"
-                android:layout_height="96dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/carta_empty_box" />
+                android:background="@drawable/carta_empty_box"
+                android:foreground="?attr/selectableItemBackground"
+                android:focusable="true"
+                android:orientation="vertical"
+                android:padding="12dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="serif"
+                    android:text="@string/daily_menu_description"
+                    android:textColor="@color/welcome_title"
+                    android:textSize="16sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="serif"
+                    android:text="@string/daily_menu_unit_price"
+                    android:textColor="@color/welcome_title"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
             <LinearLayout
                 android:id="@+id/category_sections"
                 android:layout_width="match_parent"

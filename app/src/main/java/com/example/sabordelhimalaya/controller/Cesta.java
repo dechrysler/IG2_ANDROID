@@ -16,7 +16,9 @@ public class Cesta extends AppCompatActivity {
                 SystemBarStyle.light(android.graphics.Color.TRANSPARENT, android.graphics.Color.TRANSPARENT),
                 SystemBarStyle.light(android.graphics.Color.TRANSPARENT, android.graphics.Color.TRANSPARENT));
         setContentView(R.layout.activity_cesta);
-        new CestaView(findViewById(R.id.basket_content)).initialize(() -> {
+        CestaView cestaView = new CestaView(findViewById(R.id.basket_content));
+        mostrarCesta(cestaView);
+        cestaView.initialize(() -> {
             Intent intent = new Intent(this, Principal2.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
@@ -24,6 +26,17 @@ public class Cesta extends AppCompatActivity {
         }, () -> {
             startActivity(new Intent(this, Pedidos.class));
             finish();
+        });
+    }
+
+    private void mostrarCesta(CestaView vista) {
+        vista.mostrarProductos(Principal2.getCesta().getCantidadesPlatos(),
+                Principal2.getCesta().getCantidadesMenus(), (plato, cantidad) -> {
+            Principal2.getCesta().cambiarCantidad(plato, cantidad);
+            mostrarCesta(vista);
+        }, (menu, cantidad) -> {
+            Principal2.getCesta().cambiarCantidad(menu, cantidad);
+            mostrarCesta(vista);
         });
     }
 }

@@ -1,4 +1,33 @@
 <resources>
+    <string name="daily_dialog_title">Elige tu menú diario</string>
+    <string name="daily_mains">Principales</string>
+    <string name="daily_desserts">Postres</string>
+    <string name="daily_drinks">Bebidas</string>
+    <string name="daily_choose_option">Elige 1 de %1$d</string>
+    <string name="daily_choose_drink">Elige una bebida</string>
+    <string name="basket_menu_choices">Entrante: %1$s\nPrincipal: %2$s\nPostre: %3$s\nBebida: %4$s</string>
+    <string name="daily_menu_unavailable">El menú del día no está disponible hoy</string>
+    <string name="daily_menu_description">Configura tu propio menú eligiendo un entrante, un principal, un postre y una bebida.</string>
+    <string name="daily_menu_unit_price">15,00 €</string>
+    <string name="basket_total_price">Coste total: %1$s</string>
+    <plurals name="basket_total_items">
+        <item quantity="one">%1$d artículo</item>
+        <item quantity="other">%1$d artículos</item>
+    </plurals>
+    <string name="basket_quantity">Cantidad: %1$d</string>
+    <string name="basket_unit_price">%1$s / ud.</string>
+    <string name="action_back">Volver</string>
+    <string name="action_add">Añadir</string>
+    <string name="dish_quantity">Cantidad del plato</string>
+    <string name="dish_plus">+</string>
+    <string name="dish_minus">−</string>
+    <string name="dish_increase_quantity">Aumentar cantidad</string>
+    <string name="dish_decrease_quantity">Reducir cantidad</string>
+    <string name="action_close">Cerrar</string>
+    <string name="dishes_load_error">No se pudo cargar la carta. Vuelve a abrir la pantalla para intentarlo de nuevo.</string>
+    <string name="login_read_error">No se pudieron leer los datos de acceso. Inténtalo de nuevo.</string>
+    <string name="login_invalid_username">Ingrese usuario válido</string>
+    <string name="login_invalid_password">Contraseña no válida</string>
     <string name="orders_empty_title">Aún no tiene pedidos</string>
     <string name="basket_empty_title">Añade artículos a tu pedido</string>
     <string name="category_starters">Entrantes</string>
@@ -26,6 +55,8 @@
     <string name="action_login">Iniciar sesión</string>
     <string name="action_register">Registrarse</string>
     <string name="registration_title">Registro</string>
+    <string name="registration_required_field">Debes rellenar este campo</string>
+    <string name="registration_invalid_email">Introduce un correo válido, por ejemplo nombre@dominio.com</string>
     <string name="registration_name">Nombre</string>
     <string name="registration_username">Nombre de usuario</string>
     <string name="registration_email">Correo</string>

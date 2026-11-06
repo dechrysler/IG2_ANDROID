@@ -1,0 +1,30 @@
+Samosas de verduras|ENTRANTES|Empanadillas crujientes rellenas de patata, guisantes y especias.|4.50
+Pakoras de verduras|ENTRANTES|Verduras rebozadas en harina de garbanzo con especias.|4.00
+Sopa de lentejas|ENTRANTES|Sopa suave de lentejas rojas con comino, cúrcuma y cilantro.|4.80
+Aloo Tikki|ENTRANTES|Tortitas doradas de patata especiada con salsa de tamarindo.|4.50
+Champiñones al estilo Himalaya|ENTRANTES|Champiñones salteados con ajo, jengibre y especias nepalíes.|5.20
+Ensalada Kachumber|ENSALADAS|Pepino, tomate y cebolla con limón y cilantro fresco.|4.50
+Ensalada de la casa|ENSALADAS|Hojas verdes, zanahoria y tomate con aliño suave de especias.|4.80
+Ensalada de garbanzos|ENSALADAS|Garbanzos con pimiento, cebolla morada y comino.|5.20
+Ensalada de patata Aloo|ENSALADAS|Patata cocida con sésamo, pepino y aliño de limón.|5.00
+Ensalada de mango|ENSALADAS|Mango, hojas verdes y pepino con un toque de jengibre.|5.80
+Momos de verduras|MOMOS|Dumplings al vapor rellenos de col, zanahoria y cebolla.|7.50
+Momos de pollo|MOMOS|Dumplings al vapor rellenos de pollo especiado y cilantro.|8.00
+Momos de setas|MOMOS|Dumplings al vapor con setas salteadas, ajo y jengibre.|7.80
+Momos fritos de verduras|MOMOS|Dumplings dorados y crujientes con relleno de verduras.|8.20
+Momos de pollo en salsa|MOMOS|Dumplings de pollo con salsa de tomate, sésamo y especias.|8.80
+Pollo Tandoori|TANDOORI|Pollo marinado en yogur y especias, asado al estilo tandoori.|11.50
+Paneer Tikka|TANDOORI|Dados de queso paneer marinados y asados con pimiento y cebolla.|10.50
+Pollo Tikka|TANDOORI|Bocados de pollo deshuesado con marinada de especias y limón.|11.00
+Langostinos Tandoori|TANDOORI|Langostinos marinados con yogur, ajo y especias aromáticas.|14.50
+Verduras Tandoori|TANDOORI|Verduras de temporada asadas con una marinada especiada.|9.50
+Kheer de arroz|POSTRES|Postre cremoso de arroz con leche y cardamomo.|4.00
+Gulab Jamun|POSTRES|Bolitas dulces de leche bañadas en almíbar aromatizado.|4.50
+Kulfi de pistacho|POSTRES|Helado cremoso de pistacho con un toque de cardamomo.|4.80
+Yogur con mango|POSTRES|Yogur natural con pulpa de mango y miel.|3.80
+Halwa de zanahoria|POSTRES|Dulce de zanahoria cocinada con leche y frutos secos.|4.50
+Lassi de mango|BEBIDAS|Bebida cremosa de yogur con mango.|3.50
+Lassi de banana|BEBIDAS|Bebida de yogur batido con banana.|3.50
+Agua mineral|BEBIDAS|Botella de agua mineral de 500 ml.|1.80
+Refresco de cola|BEBIDAS|Refresco de cola de 330 ml.|2.50
+Té masala|BEBIDAS|Té negro con leche, cardamomo, canela y jengibre.|2.80
