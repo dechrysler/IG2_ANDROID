@@ -32,6 +32,10 @@ public class Cesta {
         return elementos.size();
     }
 
+    public void vaciar() {
+        elementos.clear();
+    }
+
     public Map<MenuDiario, Integer> getCantidadesMenus() {
         Map<MenuDiario, Integer> menus = new LinkedHashMap<>();
         for (Object elemento : elementos) {
