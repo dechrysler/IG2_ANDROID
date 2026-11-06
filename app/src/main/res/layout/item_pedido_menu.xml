@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:background="@drawable/order_menu"
+    android:orientation="vertical"
+    android:padding="12dp">
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:fontFamily="serif"
+        android:text="@string/category_daily"
+        android:textColor="@color/welcome_title"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="6dp" />
+    <LinearLayout
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingVertical="2dp">
+        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+            android:text="@string/order_menu_starter" android:textColor="#625750" android:textSize="14sp" />
+        <TextView android:id="@+id/order_menu_starter" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="2"
+            android:textColor="@color/registration_text" android:textSize="14sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingVertical="2dp">
+        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+            android:text="@string/order_menu_main" android:textColor="#625750" android:textSize="14sp" />
+        <TextView android:id="@+id/order_menu_main" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="2"
+            android:textColor="@color/registration_text" android:textSize="14sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingVertical="2dp">
+        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+            android:text="@string/order_menu_dessert" android:textColor="#625750" android:textSize="14sp" />
+        <TextView android:id="@+id/order_menu_dessert" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="2"
+            android:textColor="@color/registration_text" android:textSize="14sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingVertical="2dp">
+        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+            android:text="@string/order_menu_drink" android:textColor="#625750" android:textSize="14sp" />
+        <TextView android:id="@+id/order_menu_drink" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="2"
+            android:textColor="@color/registration_text" android:textSize="14sp" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="2dp"
+    android:layout_marginBottom="14dp"
+    android:background="@drawable/carta_empty_box"
+    android:foreground="?attr/selectableItemBackground"
+    android:elevation="3dp"
+    android:focusable="true"
+    android:orientation="vertical"
+    android:padding="14dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/order_card_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="serif"
+            android:textColor="@color/welcome_title"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/order_card_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="serif"
+            android:textColor="@color/carta_accent"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/order_card_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:textColor="@color/registration_text"
+        android:textSize="15sp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/order_card_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/order_badge"
+            android:paddingHorizontal="9dp"
+            android:paddingVertical="7dp"
+            android:textColor="@color/carta_accent"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+        <View
+            android:layout_width="1dp"
+            android:layout_height="22dp"
+            android:layout_marginHorizontal="10dp"
+            android:background="@color/carta_border" />
+        <TextView
+            android:id="@+id/order_card_count"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableStart="@drawable/ic_nav_basket"
+            android:drawablePadding="5dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/registration_text"
+            android:textSize="14sp" />
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="6dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_order_chevron" />
+    </LinearLayout>
+</LinearLayout>

@@ -112,6 +112,19 @@
             android:layout_height="wrap_content"
             android:textColor="@color/welcome_title"
             android:textSize="16sp" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_place_order"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:minHeight="48dp"
+            android:fontFamily="serif"
+            android:text="@string/basket_place_order"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:backgroundTint="@color/carta_accent"
+            app:cornerRadius="10dp" />
     </LinearLayout>
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/basket_navigation"

@@ -1,4 +1,23 @@
 <resources>
+    <string name="orders_heading">Mis pedidos</string>
+    <plurals name="orders_count">
+        <item quantity="one">%1$d pedido</item>
+        <item quantity="other">%1$d pedidos</item>
+    </plurals>
+    <string name="order_articles_heading">ARTÍCULOS</string>
+    <string name="order_total_label">Coste total</string>
+    <string name="order_status_badge">✓ %1$s</string>
+    <string name="order_dish_quantity">%1$d×</string>
+    <string name="order_menu_starter">Entrante:</string>
+    <string name="order_menu_main">Principal:</string>
+    <string name="order_menu_dessert">Postre:</string>
+    <string name="order_menu_drink">Bebida:</string>
+    <string name="orders_dialog_title">Pedido #%1$d</string>
+    <string name="orders_summary">Pedido #%1$d · %2$s\n%3$s · %4$s</string>
+    <string name="orders_read_error">No se pudieron leer los pedidos guardados.</string>
+    <string name="basket_saved">Pedido guardado</string>
+    <string name="basket_save_error">No se pudo guardar el pedido. Inténtalo de nuevo.</string>
+    <string name="basket_place_order">Hacer pedido</string>
     <string name="daily_dialog_title">Elige tu menú diario</string>
     <string name="daily_mains">Principales</string>
     <string name="daily_desserts">Postres</string>
