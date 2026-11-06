@@ -1,36 +1,133 @@
 <resources>
-    <string name="orders_empty_title">Aún no tiene pedidos</string>
-    <string name="basket_empty_title">Añade artículos a tu pedido</string>
-    <string name="category_starters">Entrantes</string>
-    <string name="category_daily">Menú diario</string>
-    <string name="category_salads">Ensaladas</string>
-    <string name="category_momos">Momos</string>
-    <string name="category_tandoori">Tandoori</string>
-    <string name="nav_orders">Pedidos</string>
-    <string name="nav_menu">Carta</string>
-    <string name="nav_basket">Cesta</string>
-    <string name="login_title">Inicio de sesión</string>
-    <string name="login_username_label">Correo o usuario</string>
-    <string name="activation_brand">Sabor del Himalaya</string>
-    <string name="activation_title">Activa tu cuenta</string>
-    <string name="activation_description">Hemos enviado a tu correo un código para activar tu cuenta.</string>
-    <string name="activation_code_label">Código de activación</string>
-    <string name="activation_code_hint">Introduce el código</string>
-    <string name="activation_send">Enviar</string>
-    <string name="activation_not_received">¿No lo has recibido?</string>
-    <string name="activation_resend"><u>Reenviar código</u></string>
-    <string name="activation_pending">Pantalla de prueba: el envío y la verificación de códigos aún no están disponibles.</string>
     <string name="app_name">SaborDelHimalaya</string>
+    <string name="activation_brand">Sabor del Himalaya</string>
     <string name="welcome_title_first_line">Sabor del</string>
     <string name="welcome_title_second_line">Himalaya</string>
+
+    <!-- Acciones generales -->
     <string name="action_login">Iniciar sesión</string>
     <string name="action_register">Registrarse</string>
+    <string name="action_cancel">Cancelar</string>
+    <string name="action_retry">Reintentar</string>
+    <string name="action_add">Añadir</string>
+    <string name="action_back">Volver</string>
+    <string name="action_logout">Cerrar sesión</string>
+    <string name="loading">Cargando…</string>
+    <string name="error_generic">Ha ocurrido un error. Inténtalo de nuevo.</string>
+    <string name="error_network">No se puede conectar con el servidor. Comprueba que el backend esté arrancado y la conexión de red.</string>
+    <string name="error_solo_clientes">Esta aplicación es solo para clientes. Usa la web de gestión.</string>
+    <string name="error_local_network">La app necesita permiso de red local para conectar con el servidor. Actívalo en Ajustes.</string>
+    <string name="error_session">Tu sesión ha caducado. Vuelve a iniciar sesión.</string>
+    <string name="logout_confirm">¿Quieres cerrar la sesión?</string>
+
+    <!-- Login -->
+    <string name="login_title">Inicio de sesión</string>
+    <string name="login_username_label">Correo o usuario</string>
+    <string name="login_no_account">¿No tienes cuenta? Regístrate</string>
+    <string name="login_required_fields">Introduce tu usuario y contraseña.</string>
+
+    <!-- Registro -->
     <string name="registration_title">Registro</string>
     <string name="registration_name">Nombre</string>
     <string name="registration_username">Nombre de usuario</string>
     <string name="registration_email">Correo</string>
     <string name="registration_password">Contraseña</string>
+    <string name="registration_password_confirm">Confirmar contraseña</string>
     <string name="registration_address">Dirección</string>
-    <string name="action_cancel">Cancelar</string>
-    <string name="registration_pending">El registro de usuarios aún no está disponible.</string>
+    <string name="registration_required_fields">Completa todos los campos.</string>
+    <string name="registration_email_invalid">El correo no tiene un formato válido.</string>
+    <string name="registration_password_mismatch">Las contraseñas no coinciden.</string>
+    <string name="registration_field_too_long">El campo supera la longitud permitida.</string>
+
+    <!-- Activación -->
+    <string name="activation_title">Activa tu cuenta</string>
+    <string name="activation_description">Hemos enviado a tu correo un código para activar tu cuenta.</string>
+    <string name="activation_email_label">Correo de la cuenta</string>
+    <string name="activation_code_label">Código de activación</string>
+    <string name="activation_code_hint">Introduce el código de 6 dígitos</string>
+    <string name="activation_send">Activar cuenta</string>
+    <string name="activation_not_received">¿No lo has recibido?</string>
+    <string name="activation_resend"><u>Reenviar código</u></string>
+    <string name="activation_sending">Activando…</string>
+    <string name="activation_resending">Reenviando…</string>
+    <string name="activation_code_invalid">Introduce el código de 6 dígitos.</string>
+    <string name="activation_dev_hint">Modo desarrollo: el código aparece en los logs del backend, en Backend-Restaurant-IS2/tmp/codigo-activacion-tmp.txt o en Mailpit (http://localhost:8025).</string>
+    <string name="activation_email_missing">No se ha indicado el correo. Vuelve a registrarte.</string>
+
+    <!-- Carta -->
+    <string name="category_daily">Menú diario</string>
+    <string name="nav_menu">Carta</string>
+    <string name="nav_basket">Cesta</string>
+    <string name="nav_orders">Pedidos</string>
+    <string name="carta_loading">Cargando la carta…</string>
+    <string name="carta_error">No se ha podido cargar la carta.</string>
+    <string name="carta_empty_category">No hay productos disponibles en esta categoría.</string>
+    <string name="carta_no_menu">El menú del día no está disponible hoy.</string>
+    <string name="carta_added">Añadido a la cesta: %1$s</string>
+    <string name="carta_menu_components">Incluye: %1$s</string>
+    <string name="carta_logout">Salir</string>
+
+    <!-- Cesta -->
+    <string name="basket_empty_title">Añade artículos a tu pedido</string>
+    <string name="basket_empty_description">Explora la carta y añade productos o el menú del día.</string>
+    <string name="basket_title">Tu cesta</string>
+    <string name="basket_units">%1$d artículos</string>
+    <string name="basket_unit_price">%1$s / unidad</string>
+    <string name="basket_remove">Eliminar</string>
+    <string name="basket_address_label">Dirección de entrega</string>
+    <string name="basket_address_hint">Calle, número, ciudad</string>
+    <string name="basket_address_required">Indica una dirección de entrega.</string>
+    <string name="basket_subtotal">Subtotal (referencia)</string>
+    <string name="basket_review">Revisar pedido</string>
+    <string name="basket_confirm">Confirmar pedido</string>
+    <string name="basket_save_changes">Guardar cambios</string>
+    <string name="basket_preview_title">Resumen del pedido</string>
+    <string name="basket_server_total">Total del servidor</string>
+    <string name="basket_preview_required">Revisa el pedido antes de confirmarlo.</string>
+    <string name="basket_sending">Enviando…</string>
+    <string name="basket_created">Pedido %1$s confirmado.</string>
+    <string name="basket_updated">Pedido actualizado.</string>
+    <string name="basket_availability">Algún artículo ya no está disponible. Revisa la carta y actualiza la cesta.</string>
+    <string name="basket_edit_title">Modificar pedido</string>
+    <string name="basket_preview_empty">La cesta está vacía.</string>
+
+    <!-- Pedidos -->
+    <string name="orders_empty_title">Aún no tiene pedidos</string>
+    <string name="orders_empty_description">Cuando confirmes un pedido aparecerá aquí.</string>
+    <string name="orders_title">Mis pedidos</string>
+    <string name="orders_loading">Cargando pedidos…</string>
+    <string name="orders_error">No se han podido cargar los pedidos.</string>
+    <string name="orders_order_number">Pedido %1$s</string>
+    <string name="orders_date">%1$s</string>
+    <string name="orders_total">Total: %1$s</string>
+    <string name="orders_units">%1$d artículos</string>
+
+    <!-- Detalle / seguimiento -->
+    <string name="detail_title">Detalle del pedido</string>
+    <string name="detail_loading">Cargando pedido…</string>
+    <string name="detail_error">No se ha podido cargar el pedido.</string>
+    <string name="detail_not_found">El pedido ya no existe.</string>
+    <string name="detail_address">Dirección de entrega</string>
+    <string name="detail_lines">Artículos</string>
+    <string name="detail_total">Total</string>
+    <string name="detail_cancel_badge">Cancelación</string>
+    <string name="detail_modify">Modificar pedido</string>
+    <string name="detail_cancel">Cancelar pedido</string>
+    <string name="detail_cancel_confirm_title">Cancelar pedido</string>
+    <string name="detail_cancel_confirm">¿Seguro que quieres cancelar este pedido?</string>
+    <string name="detail_cancel_charge_warning">Han pasado más de 10 minutos desde la confirmación. La cancelación podría tener un cargo del 100 %.</string>
+    <string name="detail_cancel_ok">Sí, cancelar</string>
+    <string name="detail_cancel_observations">Observaciones (opcional)</string>
+    <string name="detail_cancelling">Cancelando…</string>
+    <string name="detail_cancelled">Pedido cancelado.</string>
+    <string name="detail_eta">Entrega estimada: %1$s</string>
+    <string name="detail_eta_passed">Entrega estimada: ya debería haber llegado</string>
+    <string name="detail_delivery_time">Entregado al repartidor: %1$s</string>
+    <string name="detail_observations">Observaciones: %1$s</string>
+    <string name="detail_status">Estado</string>
+    <string name="detail_updated">Actualizado: %1$s</string>
+    <string name="detail_step_received">Recibido</string>
+    <string name="detail_step_preparing">En preparación</string>
+    <string name="detail_step_ready">Listo</string>
+    <string name="detail_step_delivered">Entregado</string>
 </resources>

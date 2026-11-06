@@ -8,12 +8,13 @@
     android:orientation="vertical"
     android:background="@color/white"
     tools:context=".controller.Cesta">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingTop="12dp"
-        android:paddingBottom="16dp">
+        android:paddingBottom="12dp">
         <ImageView
             android:layout_width="64dp"
             android:layout_height="40dp"
@@ -35,26 +36,28 @@
             app:autoSizeMaxTextSize="32sp"
             app:autoSizeStepGranularity="1sp" />
     </LinearLayout>
+
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/basket_scroll"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:fillViewport="true">
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:paddingHorizontal="16dp"
-            android:paddingVertical="24dp">
+            android:paddingTop="8dp"
+            android:paddingBottom="24dp">
+
             <LinearLayout
-                android:layout_width="0dp"
+                android:id="@+id/basket_empty_state"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:gravity="center_horizontal"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintVertical_bias="0.25">
+                android:orientation="vertical"
+                android:paddingTop="48dp">
                 <ImageView
                     android:layout_width="176dp"
                     android:layout_height="176dp"
@@ -72,9 +75,177 @@
                     android:textColor="@color/welcome_title"
                     android:textSize="24sp"
                     android:textStyle="bold" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="@string/basket_empty_description"
+                    android:textColor="@color/registration_text"
+                    android:textSize="16sp" />
             </LinearLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:id="@+id/basket_form"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/basket_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:text="@string/basket_title"
+                    android:textColor="@color/welcome_title"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/basket_units"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:textColor="@color/registration_text"
+                    android:textSize="15sp" />
+
+                <LinearLayout
+                    android:id="@+id/basket_items"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
+                <TextView
+                    style="@style/RegistrationLabel"
+                    android:layout_marginTop="16dp"
+                    android:labelFor="@+id/basket_address"
+                    android:text="@string/basket_address_label" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/basket_address_container"
+                    style="@style/RegistrationInput"
+                    android:layout_marginBottom="8dp">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@id/basket_address"
+                        style="@style/RegistrationEditText"
+                        android:hint="@string/basket_address_hint"
+                        android:inputType="textPostalAddress"
+                        android:maxLines="2"
+                        android:singleLine="false"
+                        android:imeOptions="actionDone" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/basket_subtotal"
+                        android:textColor="@color/registration_text"
+                        android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/basket_subtotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/welcome_title"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/basket_preview_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/carta_card"
+                    android:orientation="vertical"
+                    android:padding="14dp"
+                    android:visibility="gone">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/basket_preview_title"
+                        android:textColor="@color/welcome_title"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                    <LinearLayout
+                        android:id="@+id/basket_preview_items"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="vertical" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@color/carta_border" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/basket_server_total"
+                            android:textColor="@color/welcome_title"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/basket_server_total"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/carta_accent"
+                            android:textSize="19sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_review_order"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:minHeight="56dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="@string/basket_review"
+                    android:textAllCaps="false"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/welcome_title"
+                    app:backgroundTint="@android:color/transparent"
+                    app:strokeColor="@color/welcome_button"
+                    app:strokeWidth="2dp"
+                    app:cornerRadius="8dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_confirm_order"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:enabled="false"
+                    android:minHeight="56dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="@string/basket_confirm"
+                    android:textAllCaps="false"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/welcome_paper"
+                    app:backgroundTint="@color/welcome_button"
+                    app:cornerRadius="8dp" />
+            </LinearLayout>
+        </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"

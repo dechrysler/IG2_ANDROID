@@ -8,12 +8,13 @@
     android:orientation="vertical"
     android:background="@color/white"
     tools:context=".controller.Pedidos">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingTop="12dp"
-        android:paddingBottom="16dp">
+        android:paddingBottom="12dp">
         <ImageView
             android:layout_width="64dp"
             android:layout_height="40dp"
@@ -35,26 +36,70 @@
             app:autoSizeMaxTextSize="32sp"
             app:autoSizeStepGranularity="1sp" />
     </LinearLayout>
+
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/orders_scroll"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:fillViewport="true">
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:paddingHorizontal="16dp"
-            android:paddingVertical="24dp">
-            <LinearLayout
-                android:layout_width="0dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="24dp">
+
+            <TextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:layout_marginBottom="8dp"
+                android:text="@string/orders_title"
+                android:textColor="@color/welcome_title"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/orders_state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
+                android:orientation="vertical">
+                <ProgressBar
+                    android:id="@+id/orders_progress"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:indeterminateTint="@color/carta_accent" />
+                <TextView
+                    android:id="@+id/orders_state_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center"
+                    android:text="@string/orders_loading"
+                    android:textColor="@color/registration_text"
+                    android:textSize="17sp" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_orders_retry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/action_retry"
+                    android:textAllCaps="false"
+                    android:visibility="gone"
+                    app:backgroundTint="@color/welcome_button" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/orders_empty_state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintVertical_bias="0.25">
+                android:orientation="vertical"
+                android:paddingTop="40dp"
+                android:visibility="gone">
                 <ImageView
                     android:layout_width="176dp"
                     android:layout_height="176dp"
@@ -72,9 +117,24 @@
                     android:textColor="@color/welcome_title"
                     android:textSize="24sp"
                     android:textStyle="bold" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="@string/orders_empty_description"
+                    android:textColor="@color/registration_text"
+                    android:textSize="16sp" />
             </LinearLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:id="@+id/orders_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -89,4 +149,3 @@
         app:labelVisibilityMode="labeled"
         app:menu="@menu/principal_navigation" />
 </LinearLayout>
-

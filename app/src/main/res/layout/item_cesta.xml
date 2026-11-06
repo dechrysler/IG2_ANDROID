@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    android:background="@drawable/carta_card"
+    android:orientation="vertical"
+    android:padding="12dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/cart_item_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/welcome_title"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/cart_item_components"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:textColor="@color/registration_text"
+                android:textSize="13sp"
+                android:textStyle="italic"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/cart_item_unit_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:textColor="@color/registration_text"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_remove_item"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="0dp"
+            android:minHeight="40dp"
+            android:paddingHorizontal="8dp"
+            android:text="@string/basket_remove"
+            android:textAllCaps="false"
+            android:textColor="@color/carta_accent"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_decrease"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="48dp"
+            android:layout_height="44dp"
+            android:minWidth="0dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:padding="0dp"
+            android:text="−"
+            android:textSize="20sp"
+            android:textColor="@color/welcome_title"
+            app:cornerRadius="8dp"
+            app:strokeColor="@color/carta_accent" />
+
+        <TextView
+            android:id="@+id/cart_item_quantity"
+            android:layout_width="48dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/welcome_title"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_increase"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="48dp"
+            android:layout_height="44dp"
+            android:minWidth="0dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:padding="0dp"
+            android:text="+"
+            android:textSize="20sp"
+            android:textColor="@color/welcome_title"
+            app:cornerRadius="8dp"
+            app:strokeColor="@color/carta_accent" />
+
+        <TextView
+            android:id="@+id/cart_item_total"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:textColor="@color/welcome_title"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</LinearLayout>

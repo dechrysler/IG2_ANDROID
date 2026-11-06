@@ -9,33 +9,49 @@
     android:background="@color/white"
     tools:context=".controller.Principal2">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:paddingTop="12dp"
-        android:paddingBottom="16dp">
-        <ImageView
-            android:layout_width="64dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center_horizontal"
-            android:importantForAccessibility="no"
-            android:src="@drawable/ic_carta_lotus" />
-        <androidx.appcompat.widget.AppCompatTextView
+        android:paddingBottom="8dp">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginHorizontal="16dp"
-            android:fontFamily="serif"
-            android:gravity="center"
-            android:maxLines="1"
-            android:text="@string/activation_brand"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="64dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_carta_lotus" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginHorizontal="72dp"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@string/activation_brand"
+                android:textColor="@color/welcome_title"
+                android:textSize="32sp"
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="16sp"
+                app:autoSizeMaxTextSize="32sp"
+                app:autoSizeStepGranularity="1sp" />
+        </LinearLayout>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_logout"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/carta_logout"
+            android:textAllCaps="false"
             android:textColor="@color/welcome_title"
-            android:textSize="32sp"
-            app:autoSizeTextType="uniform"
-            app:autoSizeMinTextSize="16sp"
-            app:autoSizeMaxTextSize="32sp"
-            app:autoSizeStepGranularity="1sp" />
-    </LinearLayout>
+            android:textSize="14sp" />
+    </FrameLayout>
 
     <HorizontalScrollView
         android:id="@+id/category_scroll"
@@ -77,9 +93,41 @@
             <FrameLayout
                 android:id="@+id/daily_content"
                 android:layout_width="match_parent"
-                android:layout_height="96dp"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/carta_empty_box" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp" />
+
+            <LinearLayout
+                android:id="@+id/carta_state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone">
+                <ProgressBar
+                    android:id="@+id/carta_progress"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:indeterminateTint="@color/carta_accent" />
+                <TextView
+                    android:id="@+id/carta_state_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center"
+                    android:textColor="@color/registration_text"
+                    android:textSize="18sp" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_carta_retry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/action_retry"
+                    android:textAllCaps="false"
+                    android:visibility="gone"
+                    app:backgroundTint="@color/welcome_button" />
+            </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/category_sections"
                 android:layout_width="match_parent"
@@ -102,4 +150,3 @@
         app:labelVisibilityMode="labeled"
         app:menu="@menu/principal_navigation" />
 </LinearLayout>
-

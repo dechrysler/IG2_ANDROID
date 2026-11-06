@@ -1,0 +1,79 @@
+package com.example.sabordelhimalaya.controller;
+
+import android.content.Intent;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.sabordelhimalaya.R;
+import com.example.sabordelhimalaya.model.remote.ApiClient;
+import com.example.sabordelhimalaya.model.remote.ApiService;
+import com.example.sabordelhimalaya.session.SessionManager;
+import com.example.sabordelhimalaya.util.ApiErrors;
+import com.google.android.material.snackbar.Snackbar;
+
+import retrofit2.Response;
+
+/** Base de las pantallas de cliente: sesión, 401 y mensajes comunes. */
+public abstract class BaseActivity extends AppCompatActivity {
+
+    protected ApiService api() {
+        return ApiClient.api();
+    }
+
+    protected SessionManager session() {
+        return SessionManager.get();
+    }
+
+    protected void showMessage(String mensaje) {
+        if (mensaje == null || mensaje.isEmpty()) {
+            return;
+        }
+        Snackbar.make(findViewById(android.R.id.content), mensaje, Snackbar.LENGTH_LONG).show();
+    }
+
+    protected String errorMessage(Response<?> response) {
+        return ApiErrors.message(response);
+    }
+
+    /**
+     * Gestiona un 401: borra la sesión y vuelve al login.
+     *
+     * @return true si la respuesta era 401 y ya se ha redirigido.
+     */
+    protected boolean handle401(Response<?> response) {
+        if (response != null && response.code() == 401) {
+            session().clear();
+            goToLogin();
+            return true;
+        }
+        return false;
+    }
+
+    /** Comprueba que hay sesión de CLIENTE. Si no, vuelve al login. */
+    protected boolean ensureCliente() {
+        if (!session().isLoggedIn() || !session().isCliente()) {
+            session().clear();
+            goToLogin();
+            return false;
+        }
+        return true;
+    }
+
+    protected void goToLogin() {
+        Intent intent = new Intent(this, InicioSesion.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
+
+    protected void goToCarta() {
+        Intent intent = new Intent(this, Principal2.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
+
+    protected void mostrarSoloClientes() {
+        showMessage(getString(R.string.error_solo_clientes));
+    }
+}

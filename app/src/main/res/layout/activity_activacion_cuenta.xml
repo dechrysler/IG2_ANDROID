@@ -53,6 +53,27 @@
                 android:textSize="20sp"
                 android:textColor="@color/registration_text" />
             <TextView
+                android:id="@+id/activation_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginHorizontal="16dp"
+                android:gravity="center"
+                android:textColor="@color/welcome_title"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/activation_dev_hint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="16dp"
+                android:gravity="center"
+                android:text="@string/activation_dev_hint"
+                android:textColor="@color/registration_text"
+                android:textSize="14sp"
+                android:visibility="gone" />
+            <TextView
                 style="@style/RegistrationLabel"
                 android:layout_marginTop="32dp"
                 android:labelFor="@+id/activation_code"

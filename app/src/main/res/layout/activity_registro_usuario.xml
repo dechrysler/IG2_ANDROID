@@ -92,6 +92,20 @@
         </com.google.android.material.textfield.TextInputLayout>
         <TextView
             style="@style/RegistrationLabel"
+            android:labelFor="@+id/registration_password_confirm"
+            android:text="@string/registration_password_confirm" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/registration_password_confirm_container"
+            style="@style/RegistrationInput"
+            app:endIconMode="password_toggle">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@id/registration_password_confirm"
+                style="@style/RegistrationEditText"
+                android:inputType="textPassword"
+                android:autofillHints="newPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            style="@style/RegistrationLabel"
             android:labelFor="@+id/registration_address"
             android:text="@string/registration_address" />
         <com.google.android.material.textfield.TextInputLayout
