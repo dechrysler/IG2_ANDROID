@@ -9,6 +9,7 @@ import androidx.activity.SystemBarStyle;
 import com.example.sabordelhimalaya.R;
 import com.example.sabordelhimalaya.model.CartRepository;
 import com.example.sabordelhimalaya.model.Menu;
+import com.example.sabordelhimalaya.model.SeleccionMenu;
 import com.example.sabordelhimalaya.model.dto.MenuResponse;
 import com.example.sabordelhimalaya.util.ApiErrors;
 import com.example.sabordelhimalaya.view.MenuDetalleView;
@@ -88,7 +89,12 @@ public class MenuDetalle extends BaseActivity {
         if (menu == null) {
             return;
         }
-        CartRepository.get(this).addMenu(menu, view.getCantidad());
+        SeleccionMenu seleccion = view.getSeleccion();
+        if (seleccion == null) {
+            showMessage(getString(R.string.menu_selection_incomplete));
+            return;
+        }
+        CartRepository.get(this).addMenu(menu, seleccion, view.getCantidad());
         Toast.makeText(this, R.string.menu_detail_added, Toast.LENGTH_SHORT).show();
         finish();
     }

@@ -194,12 +194,6 @@ public class Principal2 extends BaseActivity implements Principal2View.Listener 
     }
 
     @Override
-    public void onAddMenu(Menu menu) {
-        cart.addMenu(menu);
-        showMessage(getString(R.string.carta_added, menu.getNombre()));
-    }
-
-    @Override
     public void onMenuClick(Menu menu) {
         Intent intent = new Intent(this, MenuDetalle.class);
         intent.putExtra(MenuDetalle.EXTRA_MENU_ID, menu.getId());

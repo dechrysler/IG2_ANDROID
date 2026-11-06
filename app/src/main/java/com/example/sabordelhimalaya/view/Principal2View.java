@@ -35,8 +35,6 @@ public final class Principal2View {
 
         void onPlatoClick(Plato plato);
 
-        void onAddMenu(Menu menu);
-
         void onMenuClick(Menu menu);
     }
 
@@ -237,18 +235,14 @@ public final class Principal2View {
             descripcion.setText(menu.getDescripcion());
         }
         TextView componentes = item.findViewById(R.id.menu_components);
-        String lista = menu.nombresProductos();
-        if (lista.isEmpty()) {
-            componentes.setVisibility(View.GONE);
-        } else {
-            componentes.setText(content.getContext()
-                    .getString(R.string.carta_menu_components, lista));
-        }
+        componentes.setVisibility(View.VISIBLE);
+        componentes.setText(content.getContext().getString(R.string.menu_sections_summary,
+                menu.getEntrantes().size(), menu.getPrincipales().size(),
+                menu.getPostres().size(), menu.getBebidas().size()));
         ((TextView) item.findViewById(R.id.menu_price)).setText(Formatters.money(menu.getPrecio()));
-        String imagen = menu.getProductos().isEmpty() ? null : menu.getProductos().get(0).getImagenUrl();
+        List<Plato> todos = menu.getTodosLosPlatos();
+        String imagen = todos.isEmpty() ? null : todos.get(0).getImagenUrl();
         cargarImagen(item.findViewById(R.id.menu_image), imagen);
-        item.findViewById(R.id.button_add_menu)
-                .setOnClickListener(view -> listener.onAddMenu(menu));
         item.setOnClickListener(view -> listener.onMenuClick(menu));
         dailyContent.addView(item);
     }

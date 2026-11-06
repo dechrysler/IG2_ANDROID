@@ -14,9 +14,17 @@ public class Plato {
     private final String categoriaNombre;
     private final BigDecimal precio;
     private final boolean disponible;
+    private final boolean enCarta;
 
     public Plato(String id, String nombre, String descripcion, String imagenUrl,
                  int categoria, String categoriaNombre, BigDecimal precio, boolean disponible) {
+        this(id, nombre, descripcion, imagenUrl, categoria, categoriaNombre,
+                precio, disponible, true);
+    }
+
+    public Plato(String id, String nombre, String descripcion, String imagenUrl,
+                 int categoria, String categoriaNombre, BigDecimal precio,
+                 boolean disponible, boolean enCarta) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -25,6 +33,7 @@ public class Plato {
         this.categoriaNombre = categoriaNombre;
         this.precio = precio;
         this.disponible = disponible;
+        this.enCarta = enCarta;
     }
 
     public static Plato from(DishResponse response) {
@@ -36,7 +45,8 @@ public class Plato {
                 response.categoria != null ? response.categoria : 0,
                 response.categoriaNombre,
                 response.precio,
-                response.disponible
+                response.disponible,
+                response.enCarta == null || response.enCarta
         );
     }
 
@@ -70,5 +80,9 @@ public class Plato {
 
     public boolean isDisponible() {
         return disponible;
+    }
+
+    public boolean isEnCarta() {
+        return enCarta;
     }
 }

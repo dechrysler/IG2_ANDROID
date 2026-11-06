@@ -180,7 +180,15 @@ public final class DetallePedidoView {
                     linea.getCantidad() + " × " + Formatters.money(linea.getPrecioUnitario())
                             + " · " + Formatters.tipoLinea(linea.getTipo()));
             TextView componentes = row.findViewById(R.id.line_components);
-            if (linea.getComponentes() == null || linea.getComponentes().isEmpty()) {
+            if (linea.getSeleccion() != null) {
+                componentes.setVisibility(View.VISIBLE);
+                componentes.setText(content.getContext().getString(
+                        R.string.detail_menu_selection,
+                        nombre(linea.getSeleccion().getEntrante()),
+                        nombre(linea.getSeleccion().getPrincipal()),
+                        nombre(linea.getSeleccion().getPostre()),
+                        nombre(linea.getSeleccion().getBebida())));
+            } else if (linea.getComponentes() == null || linea.getComponentes().isEmpty()) {
                 componentes.setVisibility(View.GONE);
             } else {
                 componentes.setVisibility(View.VISIBLE);
@@ -215,5 +223,9 @@ public final class DetallePedidoView {
             pasos[i].setBackgroundTintList(ColorStateList.valueOf(completado ? activo : inactivo));
             pasos[i].setTextColor(completado ? textoActivo : textoInactivo);
         }
+    }
+
+    private String nombre(com.example.sabordelhimalaya.model.OpcionSeleccionada opcion) {
+        return opcion == null || opcion.getNombre() == null ? "—" : opcion.getNombre();
     }
 }

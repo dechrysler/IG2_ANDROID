@@ -7,7 +7,6 @@ import androidx.activity.EdgeToEdge;
 import androidx.activity.SystemBarStyle;
 
 import com.example.sabordelhimalaya.R;
-import com.example.sabordelhimalaya.model.CartRepository;
 import com.example.sabordelhimalaya.model.Menu;
 import com.example.sabordelhimalaya.model.dto.MenuResponse;
 import com.example.sabordelhimalaya.util.ApiErrors;
@@ -22,7 +21,6 @@ import retrofit2.Response;
 
 public class Menus extends BaseActivity implements MenusView.Listener {
     private MenusView view;
-    private CartRepository cart;
     private boolean cargando;
 
     @Override
@@ -35,7 +33,6 @@ public class Menus extends BaseActivity implements MenusView.Listener {
         if (!ensureCliente()) {
             return;
         }
-        cart = CartRepository.get(this);
         view = new MenusView(findViewById(R.id.menus_content), this);
         view.initialize(this::finish);
     }
@@ -97,11 +94,5 @@ public class Menus extends BaseActivity implements MenusView.Listener {
         intent.putExtra(MenuDetalle.EXTRA_MENU_ID, menu.getId());
         intent.putExtra(MenuDetalle.EXTRA_MENU_NAME, menu.getNombre());
         startActivity(intent);
-    }
-
-    @Override
-    public void onAddMenu(Menu menu) {
-        cart.addMenu(menu);
-        showMessage(getString(R.string.carta_added, menu.getNombre()));
     }
 }

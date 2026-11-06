@@ -12,4 +12,17 @@ public class OrderItemResponse {
     public int cantidad;
     public BigDecimal precioUnitario;
     public BigDecimal importeLinea;
+    public Seleccion seleccion;
+
+    public static class Seleccion {
+        public Opcion entrante;
+        public Opcion principal;
+        public Opcion postre;
+        public Opcion bebida;
+    }
+
+    public static class Opcion {
+        public String id;
+        public String nombre;
+    }
 }

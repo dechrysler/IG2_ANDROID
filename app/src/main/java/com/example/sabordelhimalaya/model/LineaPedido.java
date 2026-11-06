@@ -15,10 +15,12 @@ public class LineaPedido {
     private final int cantidad;
     private final BigDecimal precioUnitario;
     private final BigDecimal importeLinea;
+    private final SeleccionMenu seleccion;
 
     public LineaPedido(String tipo, String platoId, String menuId, String nombre,
                        List<String> componentes, int cantidad,
-                       BigDecimal precioUnitario, BigDecimal importeLinea) {
+                       BigDecimal precioUnitario, BigDecimal importeLinea,
+                       SeleccionMenu seleccion) {
         this.tipo = tipo;
         this.platoId = platoId;
         this.menuId = menuId;
@@ -27,12 +29,33 @@ public class LineaPedido {
         this.cantidad = cantidad;
         this.precioUnitario = precioUnitario;
         this.importeLinea = importeLinea;
+        this.seleccion = seleccion;
     }
 
     public static LineaPedido from(OrderItemResponse response) {
         return new LineaPedido(response.tipo, response.platoId, response.menuId,
                 response.nombre, response.componentes, response.cantidad,
-                response.precioUnitario, response.importeLinea);
+                response.precioUnitario, response.importeLinea,
+                seleccionDe(response.seleccion));
+    }
+
+    private static SeleccionMenu seleccionDe(OrderItemResponse.Seleccion seleccion) {
+        if (seleccion == null) {
+            return null;
+        }
+        return SeleccionMenu.from(
+                opcion(seleccion.entrante),
+                opcion(seleccion.principal),
+                opcion(seleccion.postre),
+                opcion(seleccion.bebida)
+        );
+    }
+
+    private static OpcionSeleccionada opcion(OrderItemResponse.Opcion opcion) {
+        if (opcion == null) {
+            return null;
+        }
+        return new OpcionSeleccionada(opcion.id, opcion.nombre);
     }
 
     public String getTipo() {
@@ -65,5 +88,9 @@ public class LineaPedido {
 
     public BigDecimal getImporteLinea() {
         return importeLinea;
+    }
+
+    public SeleccionMenu getSeleccion() {
+        return seleccion;
     }
 }

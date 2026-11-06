@@ -66,6 +66,16 @@ public final class CartRepository {
         return total;
     }
 
+    /** Cestas antiguas pueden contener menús sin las cuatro opciones. */
+    public boolean tieneMenusSinSeleccion() {
+        for (CartItem item : items) {
+            if (item.esMenu() && !item.tieneSeleccionCompleta()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void addPlato(Plato plato) {
         addPlato(plato, 1);
     }
@@ -81,21 +91,18 @@ public final class CartRepository {
         save();
     }
 
-    public void addMenu(Menu menu) {
-        addMenu(menu, 1);
-    }
-
-    public void addMenu(Menu menu, int cantidad) {
-        CartItem existing = find("MENU", menu.getId());
+    public void addMenu(Menu menu, SeleccionMenu seleccion, int cantidad) {
+        if (seleccion == null || !seleccion.estaCompleta()) {
+            return;
+        }
+        CartItem existing = findMenu(menu.getId(), seleccion);
         if (existing != null) {
             existing.cantidad += cantidad;
         } else {
-            List<String> componentes = new ArrayList<>();
-            for (Plato plato : menu.getProductos()) {
-                componentes.add(plato.getNombre());
-            }
-            items.add(new CartItem("MENU", menu.getId(), menu.getNombre(),
-                    menu.getPrecio(), cantidad, componentes, null));
+            CartItem item = new CartItem("MENU", menu.getId(), menu.getNombre(),
+                    menu.getPrecio(), cantidad, nombresSeleccion(seleccion), null);
+            item.aplicarSeleccion(seleccion);
+            items.add(item);
         }
         save();
     }
@@ -143,9 +150,13 @@ public final class CartRepository {
                 items.add(new CartItem("PRODUCTO", linea.getPlatoId(), linea.getNombre(),
                         linea.getPrecioUnitario(), linea.getCantidad(), List.of(), null));
             } else if (linea.getMenuId() != null) {
-                items.add(new CartItem("MENU", linea.getMenuId(), linea.getNombre(),
+                CartItem item = new CartItem("MENU", linea.getMenuId(), linea.getNombre(),
                         linea.getPrecioUnitario(), linea.getCantidad(),
-                        linea.getComponentes(), null));
+                        linea.getComponentes(), null);
+                if (linea.getSeleccion() != null && linea.getSeleccion().estaCompleta()) {
+                    item.aplicarSeleccion(linea.getSeleccion());
+                }
+                items.add(item);
             }
         }
         editingOrderId = pedido.getId();
@@ -171,7 +182,9 @@ public final class CartRepository {
         List<OrderItemRequest> lineas = new ArrayList<>();
         for (CartItem item : items) {
             if ("MENU".equals(item.tipo)) {
-                lineas.add(OrderItemRequest.menu(item.id, item.cantidad));
+                lineas.add(OrderItemRequest.menu(item.id,
+                        item.entranteId, item.principalId,
+                        item.postreId, item.bebidaId, item.cantidad));
             } else {
                 lineas.add(OrderItemRequest.producto(item.id, item.cantidad));
             }
@@ -179,9 +192,33 @@ public final class CartRepository {
         return new CreateOrderRequest(lineas, direccion);
     }
 
+    private List<String> nombresSeleccion(SeleccionMenu seleccion) {
+        List<String> nombres = new ArrayList<>();
+        nombres.add(nombre(seleccion.getEntrante()));
+        nombres.add(nombre(seleccion.getPrincipal()));
+        nombres.add(nombre(seleccion.getPostre()));
+        nombres.add(nombre(seleccion.getBebida()));
+        return nombres;
+    }
+
+    private String nombre(OpcionSeleccionada opcion) {
+        return opcion != null && opcion.getNombre() != null ? opcion.getNombre() : "";
+    }
+
     private CartItem find(String tipo, String id) {
         for (CartItem item : items) {
             if (item.tipo.equals(tipo) && item.id.equals(id)) {
+                return item;
+            }
+        }
+        return null;
+    }
+
+    private CartItem findMenu(String menuId, SeleccionMenu seleccion) {
+        for (CartItem item : items) {
+            if (item.esMenu()
+                    && menuId.equals(item.id)
+                    && item.coincideSeleccion(seleccion)) {
                 return item;
             }
         }
@@ -219,6 +256,15 @@ public final class CartRepository {
         public List<String> componentes;
         public String imagenUrl;
 
+        public String entranteId;
+        public String entranteNombre;
+        public String principalId;
+        public String principalNombre;
+        public String postreId;
+        public String postreNombre;
+        public String bebidaId;
+        public String bebidaNombre;
+
         public CartItem() {
         }
 
@@ -235,6 +281,56 @@ public final class CartRepository {
 
         public boolean esMenu() {
             return "MENU".equals(tipo);
+        }
+
+        public boolean tieneSeleccionCompleta() {
+            return entranteId != null && principalId != null
+                    && postreId != null && bebidaId != null;
+        }
+
+        public boolean coincideSeleccion(SeleccionMenu seleccion) {
+            if (seleccion == null) {
+                return false;
+            }
+            return equals(opcionId(seleccion.getEntrante()), entranteId)
+                    && equals(opcionId(seleccion.getPrincipal()), principalId)
+                    && equals(opcionId(seleccion.getPostre()), postreId)
+                    && equals(opcionId(seleccion.getBebida()), bebidaId);
+        }
+
+        public void aplicarSeleccion(SeleccionMenu seleccion) {
+            if (seleccion == null) {
+                return;
+            }
+            entranteId = opcionId(seleccion.getEntrante());
+            entranteNombre = opcionNombre(seleccion.getEntrante());
+            principalId = opcionId(seleccion.getPrincipal());
+            principalNombre = opcionNombre(seleccion.getPrincipal());
+            postreId = opcionId(seleccion.getPostre());
+            postreNombre = opcionNombre(seleccion.getPostre());
+            bebidaId = opcionId(seleccion.getBebida());
+            bebidaNombre = opcionNombre(seleccion.getBebida());
+        }
+
+        public SeleccionMenu getSeleccion() {
+            return SeleccionMenu.from(
+                    new OpcionSeleccionada(entranteId, entranteNombre),
+                    new OpcionSeleccionada(principalId, principalNombre),
+                    new OpcionSeleccionada(postreId, postreNombre),
+                    new OpcionSeleccionada(bebidaId, bebidaNombre)
+            );
+        }
+
+        private static String opcionId(OpcionSeleccionada opcion) {
+            return opcion != null ? opcion.getId() : null;
+        }
+
+        private static String opcionNombre(OpcionSeleccionada opcion) {
+            return opcion != null ? opcion.getNombre() : null;
+        }
+
+        private static boolean equals(String a, String b) {
+            return a == null ? b == null : a.equals(b);
         }
     }
 }

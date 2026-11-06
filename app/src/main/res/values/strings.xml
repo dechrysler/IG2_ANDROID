@@ -139,14 +139,20 @@
     <string name="menus_empty">No hay menús disponibles ahora mismo.</string>
     <string name="menus_empty_action">Volver a la carta</string>
     <string name="menus_view">Ver menú</string>
-    <string name="menus_add">Añadir menú</string>
+    <string name="menus_add">Elegir opciones</string>
     <string name="menus_daily_badge">Menú del día</string>
     <string name="menus_all">Ver todos los menús</string>
     <string name="menus_products_count">%1$d productos</string>
+    <string name="menu_sections_summary">%1$d entrantes · %2$d principales · %3$d postres · %4$d bebida</string>
     <string name="menu_detail_title">Detalle del menú</string>
     <string name="menu_detail_loading">Cargando menú…</string>
     <string name="menu_detail_error">No se ha podido cargar el menú.</string>
-    <string name="menu_detail_products">Productos incluidos</string>
+    <string name="menu_detail_products">Elige tu menú</string>
+    <string name="menu_section_entrantes">Elige tu entrante</string>
+    <string name="menu_section_principales">Elige tu principal</string>
+    <string name="menu_section_postres">Elige tu postre</string>
+    <string name="menu_section_bebidas">Elige tu bebida</string>
+    <string name="menu_selection_incomplete">Elige una opción de cada sección para continuar.</string>
     <string name="menu_detail_quantity">Cantidad</string>
     <string name="menu_detail_add">Añadir %1$d a la cesta</string>
     <string name="menu_detail_price">Precio del menú</string>
@@ -185,4 +191,7 @@
     <string name="basket_edit_cart">Editar cesta</string>
     <string name="basket_processing">Procesando…</string>
     <string name="basket_reviewing">Revisando…</string>
+    <string name="basket_menu_selection">Entrante: %1$s\nPrincipal: %2$s\nPostre: %3$s\nBebida: %4$s</string>
+    <string name="basket_menu_selection_legacy">Hay un menú antiguo sin opciones. Elimínalo de la cesta y vuelve a añadirlo.</string>
+    <string name="detail_menu_selection">Entrante: %1$s\nPrincipal: %2$s\nPostre: %3$s\nBebida: %4$s</string>
 </resources>

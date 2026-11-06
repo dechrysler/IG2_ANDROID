@@ -68,6 +68,10 @@ public class Cesta extends BaseActivity implements CestaView.Listener {
 
     @Override
     public void onReview() {
+        if (cart.tieneMenusSinSeleccion()) {
+            showMessage(getString(R.string.basket_menu_selection_legacy));
+            return;
+        }
         String direccion = view.getDireccion();
         // Si se deja vacía, el backend usa la dirección del perfil del cliente.
         view.showDireccionError(null);
@@ -106,6 +110,10 @@ public class Cesta extends BaseActivity implements CestaView.Listener {
     @Override
     public void onConfirm() {
         if (enviando) {
+            return;
+        }
+        if (cart.tieneMenusSinSeleccion()) {
+            showMessage(getString(R.string.basket_menu_selection_legacy));
             return;
         }
         if (!view.isPreviewVisible()) {

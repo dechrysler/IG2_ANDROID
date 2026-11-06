@@ -177,7 +177,13 @@ public final class CestaView {
             View row = inflater.inflate(R.layout.item_cesta, itemsContainer, false);
             ((TextView) row.findViewById(R.id.cart_item_name)).setText(item.nombre);
             TextView componentes = row.findViewById(R.id.cart_item_components);
-            if (item.componentes == null || item.componentes.isEmpty()) {
+            if (item.esMenu() && item.tieneSeleccionCompleta()) {
+                componentes.setVisibility(View.VISIBLE);
+                componentes.setText(content.getContext().getString(
+                        R.string.basket_menu_selection,
+                        valor(item.entranteNombre), valor(item.principalNombre),
+                        valor(item.postreNombre), valor(item.bebidaNombre)));
+            } else if (item.componentes == null || item.componentes.isEmpty()) {
                 componentes.setVisibility(View.GONE);
             } else {
                 componentes.setVisibility(View.VISIBLE);
@@ -216,10 +222,12 @@ public final class CestaView {
         if (preview.items != null) {
             for (OrderItemResponse item : preview.items) {
                 TextView linea = new TextView(content.getContext());
-                String componentes = item.componentes == null || item.componentes.isEmpty()
+                String detalle = item.seleccion != null
+                        ? " (" + seleccionPreview(item) + ")"
+                        : (item.componentes == null || item.componentes.isEmpty()
                         ? ""
-                        : " (" + String.join(", ", item.componentes) + ")";
-                linea.setText(item.cantidad + " × " + item.nombre + componentes + "  —  "
+                        : " (" + String.join(", ", item.componentes) + ")");
+                linea.setText(item.cantidad + " × " + item.nombre + detalle + "  —  "
                         + Formatters.money(item.importeLinea));
                 linea.setTextColor(content.getResources().getColor(R.color.registration_text, null));
                 linea.setTextSize(15);
@@ -289,5 +297,21 @@ public final class CestaView {
         }
         editButton.setVisibility(preview ? View.VISIBLE : View.GONE);
         editButton.setEnabled(true);
+    }
+
+    private String seleccionPreview(OrderItemResponse item) {
+        return content.getContext().getString(R.string.basket_menu_selection,
+                nombre(item.seleccion.entrante),
+                nombre(item.seleccion.principal),
+                nombre(item.seleccion.postre),
+                nombre(item.seleccion.bebida));
+    }
+
+    private String nombre(OrderItemResponse.Opcion opcion) {
+        return opcion == null || opcion.nombre == null ? "—" : opcion.nombre;
+    }
+
+    private String valor(String texto) {
+        return texto == null || texto.isEmpty() ? "—" : texto;
     }
 }

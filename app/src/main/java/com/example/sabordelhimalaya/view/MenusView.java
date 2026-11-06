@@ -23,8 +23,6 @@ public final class MenusView {
 
     public interface Listener {
         void onMenuClick(Menu menu);
-
-        void onAddMenu(Menu menu);
     }
 
     private final View content;
@@ -115,8 +113,9 @@ public final class MenusView {
             }
 
             ((TextView) card.findViewById(R.id.menu_card_products)).setText(
-                    content.getContext().getString(R.string.menus_products_count,
-                            menu.getProductos().size()));
+                    content.getContext().getString(R.string.menu_sections_summary,
+                            menu.getEntrantes().size(), menu.getPrincipales().size(),
+                            menu.getPostres().size(), menu.getBebidas().size()));
             ((TextView) card.findViewById(R.id.menu_card_price)).setText(
                     Formatters.money(menu.getPrecio()));
 
@@ -124,8 +123,8 @@ public final class MenusView {
                     esMenuDelDia(menu) ? View.VISIBLE : View.GONE);
 
             ImageView image = card.findViewById(R.id.menu_card_image);
-            String imagen = menu.getProductos().isEmpty()
-                    ? null : menu.getProductos().get(0).getImagenUrl();
+            java.util.List<Plato> todos = menu.getTodosLosPlatos();
+            String imagen = todos.isEmpty() ? null : todos.get(0).getImagenUrl();
             String url = ImageUrls.resolve(imagen);
             if (url == null) {
                 image.setImageResource(R.drawable.ic_plato_placeholder);
@@ -139,8 +138,6 @@ public final class MenusView {
             }
 
             card.setOnClickListener(view -> listener.onMenuClick(menu));
-            card.findViewById(R.id.button_menu_card_add)
-                    .setOnClickListener(view -> listener.onAddMenu(menu));
             list.addView(card);
         }
     }
@@ -150,16 +147,5 @@ public final class MenusView {
             return false;
         }
         return menu.getFechaMenuDelDia().equals(java.time.LocalDate.now());
-    }
-
-    public static String nombresProductos(Menu menu) {
-        StringBuilder builder = new StringBuilder();
-        for (Plato plato : menu.getProductos()) {
-            if (builder.length() > 0) {
-                builder.append(" · ");
-            }
-            builder.append(plato.getNombre());
-        }
-        return builder.toString();
     }
 }

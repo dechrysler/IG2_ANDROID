@@ -84,13 +84,12 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/button_menu_card_add"
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            android:background="@drawable/bg_add_circle"
-            android:contentDescription="@string/menus_add"
-            android:padding="11dp"
-            android:src="@drawable/ic_plus_white" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/menus_add"
+            android:textColor="@color/carta_accent"
+            android:textSize="14sp"
+            android:textStyle="bold" />
     </LinearLayout>
 </LinearLayout>

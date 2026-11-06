@@ -11,4 +11,6 @@ public class DishResponse {
     public String categoriaNombre;
     public BigDecimal precio;
     public boolean disponible;
+    /** Null en respuestas antiguas; false indica que solo se usa dentro de menús. */
+    public Boolean enCarta;
 }
