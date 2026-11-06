@@ -1,0 +1,8 @@
+ENTRANTE|Samosas de verduras
+ENTRANTE|Sopa de lentejas
+ENTRANTE|Ensalada Kachumber
+PRINCIPAL|Momos de pollo
+PRINCIPAL|Paneer Tikka
+PRINCIPAL|Pollo Tandoori
+POSTRE|Kheer de arroz
+POSTRE|Gulab Jamun

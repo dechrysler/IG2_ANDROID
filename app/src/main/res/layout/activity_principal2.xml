@@ -90,7 +90,7 @@
                 android:id="@+id/daily_title"
                 style="@style/CartaSectionTitle"
                 android:text="@string/category_daily" />
-            <FrameLayout
+            <LinearLayout
                 android:id="@+id/daily_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
