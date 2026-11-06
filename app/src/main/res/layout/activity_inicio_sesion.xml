@@ -56,7 +56,6 @@
                 android:text="@string/login_username_label"
                 android:textColor="@color/welcome_title" />
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/login_username_container"
                 style="@style/RegistrationInput">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@id/login_username"
@@ -71,7 +70,6 @@
                 android:text="@string/registration_password"
                 android:textColor="@color/welcome_title" />
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/login_password_container"
                 style="@style/RegistrationInput"
                 app:endIconMode="password_toggle"
                 app:endIconTint="@color/welcome_title">

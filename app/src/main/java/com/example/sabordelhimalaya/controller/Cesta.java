@@ -204,15 +204,4 @@ public class Cesta extends BaseActivity implements CestaView.Listener {
                 || texto.contains("no está configurado")
                 || texto.contains("no esta configurado");
     }
-
-    private void mostrarCesta(CestaView vista) {
-        vista.mostrarProductos(Principal2.getCesta().getCantidadesPlatos(),
-                Principal2.getCesta().getCantidadesMenus(), (plato, cantidad) -> {
-            Principal2.getCesta().cambiarCantidad(plato, cantidad);
-            mostrarCesta(vista);
-        }, (menu, cantidad) -> {
-            Principal2.getCesta().cambiarCantidad(menu, cantidad);
-            mostrarCesta(vista);
-        });
-    }
 }

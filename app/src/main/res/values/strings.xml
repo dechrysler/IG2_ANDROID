@@ -28,8 +28,6 @@
 
     <!-- Registro -->
     <string name="registration_title">Registro</string>
-    <string name="registration_required_field">Debes rellenar este campo</string>
-    <string name="registration_invalid_email">Introduce un correo válido, por ejemplo nombre@dominio.com</string>
     <string name="registration_name">Nombre</string>
     <string name="registration_username">Nombre de usuario</string>
     <string name="registration_email">Correo</string>

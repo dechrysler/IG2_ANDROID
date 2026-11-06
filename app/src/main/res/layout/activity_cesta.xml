@@ -250,29 +250,6 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/carta_border" />
-    <LinearLayout
-        android:id="@+id/basket_summary"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingHorizontal="16dp"
-        android:paddingVertical="10dp"
-        android:background="@color/welcome_paper">
-        <TextView
-            android:id="@+id/basket_total_price"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="serif"
-            android:textColor="@color/welcome_title"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-        <TextView
-            android:id="@+id/basket_total_items"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/welcome_title"
-            android:textSize="16sp" />
-    </LinearLayout>
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/basket_navigation"
         android:layout_width="match_parent"

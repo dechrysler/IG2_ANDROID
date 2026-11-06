@@ -17,10 +17,6 @@ import com.example.sabordelhimalaya.model.dto.DishResponse;
 import com.example.sabordelhimalaya.model.dto.TodayMenuResponse;
 import com.example.sabordelhimalaya.util.ApiErrors;
 import com.example.sabordelhimalaya.view.Principal2View;
-import com.example.sabordelhimalaya.model.PlatoRepository;
-import com.example.sabordelhimalaya.model.MenuDiarioRepository;
-import com.example.sabordelhimalaya.model.Plato;
-import java.util.List;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,9 +33,6 @@ public class Principal2 extends BaseActivity implements Principal2View.Listener 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (savedInstanceState == null) {
-            cesta = new com.example.sabordelhimalaya.model.Cesta();
-        }
         EdgeToEdge.enable(this,
                 SystemBarStyle.light(android.graphics.Color.TRANSPARENT, android.graphics.Color.TRANSPARENT),
                 SystemBarStyle.light(android.graphics.Color.TRANSPARENT, android.graphics.Color.TRANSPARENT));
@@ -205,11 +198,4 @@ public class Principal2 extends BaseActivity implements Principal2View.Listener 
                 .setNegativeButton(R.string.action_cancel, null)
                 .show();
     }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        principalView.mostrarContadorCesta(cesta.getNumeroElementos());
-    }
-
 }

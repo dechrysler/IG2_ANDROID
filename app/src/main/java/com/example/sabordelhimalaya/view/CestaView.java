@@ -61,64 +61,6 @@ public final class CestaView {
         this.cart = CartRepository.get(content.getContext());
     }
 
-    public void mostrarProductos(Map<Plato, Integer> platos, Map<MenuDiario, Integer> menus,
-                                 BiConsumer<Plato, Integer> alCambiarCantidad,
-                                 BiConsumer<MenuDiario, Integer> alCambiarMenu) {
-        boolean vacia = platos.isEmpty() && menus.isEmpty();
-        content.findViewById(R.id.basket_summary).setVisibility(vacia ? View.GONE : View.VISIBLE);
-        content.findViewById(R.id.basket_empty_state).setVisibility(vacia ? View.VISIBLE : View.GONE);
-        LinearLayout lista = content.findViewById(R.id.basket_items);
-        lista.removeAllViews();
-        lista.setVisibility(vacia ? View.GONE : View.VISIBLE);
-
-        LayoutInflater inflater = LayoutInflater.from(content.getContext());
-        NumberFormat moneda = NumberFormat.getCurrencyInstance(Locale.forLanguageTag("es-ES"));
-        int numeroArticulos = 0;
-        BigDecimal costeTotal = BigDecimal.ZERO;
-        for (Map.Entry<Plato, Integer> entrada : platos.entrySet()) {
-            Plato plato = entrada.getKey();
-            int cantidad = entrada.getValue();
-            numeroArticulos += cantidad;
-            costeTotal = costeTotal.add(BigDecimal.valueOf(plato.getPrecio())
-                    .multiply(BigDecimal.valueOf(cantidad)));
-            View fila = inflater.inflate(R.layout.item_plato, lista, false);
-            ((TextView) fila.findViewById(R.id.dish_name)).setText(plato.getNombre());
-            ((TextView) fila.findViewById(R.id.dish_description)).setText(content.getResources()
-                    .getString(R.string.basket_quantity, cantidad));
-            ((TextView) fila.findViewById(R.id.dish_price)).setText(content.getResources()
-                    .getString(R.string.basket_unit_price, moneda.format(plato.getPrecio())));
-            fila.setOnClickListener(view -> new PlatoDialog().editar(content.getContext(), plato,
-                    cantidad, nuevaCantidad -> alCambiarCantidad.accept(plato, nuevaCantidad)));
-            lista.addView(fila);
-        }
-        for (Map.Entry<MenuDiario, Integer> entrada : menus.entrySet()) {
-            MenuDiario menu = entrada.getKey();
-            int cantidad = entrada.getValue();
-            numeroArticulos += cantidad;
-            costeTotal = costeTotal.add(BigDecimal.valueOf(menu.getPrecio())
-                    .multiply(BigDecimal.valueOf(cantidad)));
-            View fila = inflater.inflate(R.layout.item_plato, lista, false);
-            ((TextView) fila.findViewById(R.id.dish_name)).setText(R.string.category_daily);
-            String elecciones = content.getResources().getString(R.string.basket_menu_choices,
-                    menu.getEntrantes().get(0).getNombre(), menu.getPrincipales().get(0).getNombre(),
-                    menu.getPostres().get(0).getNombre(), menu.getBebidas().get(0).getNombre());
-            String cantidadTexto = content.getResources().getString(R.string.basket_quantity, cantidad);
-            ((TextView) fila.findViewById(R.id.dish_description)).setText(cantidadTexto + "\n" + elecciones);
-            ((TextView) fila.findViewById(R.id.dish_price)).setText(content.getResources()
-                    .getString(R.string.basket_unit_price, moneda.format(menu.getPrecio())));
-            fila.setOnClickListener(view -> new PlatoDialog().editar(content.getContext(),
-                    content.getResources().getString(R.string.category_daily), elecciones,
-                    cantidad, nuevaCantidad -> alCambiarMenu.accept(menu, nuevaCantidad)));
-            lista.addView(fila);
-        }
-        TextView articulos = content.findViewById(R.id.basket_total_items);
-        articulos.setText(content.getResources().getQuantityString(
-                R.plurals.basket_total_items, numeroArticulos, numeroArticulos));
-        TextView total = content.findViewById(R.id.basket_total_price);
-        total.setText(content.getResources().getString(R.string.basket_total_price,
-                moneda.format(costeTotal)));
-    }
-
     public void initialize(Runnable onCartaClick, Runnable onPedidosClick) {
         ViewCompat.setOnApplyWindowInsetsListener(content, (view, windowInsets) -> {
             Insets safe = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars()
