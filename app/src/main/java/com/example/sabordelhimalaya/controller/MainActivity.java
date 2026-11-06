@@ -13,6 +13,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.example.sabordelhimalaya.R;
+import com.example.sabordelhimalaya.model.CartRepository;
 import com.example.sabordelhimalaya.model.dto.UserProfile;
 import com.example.sabordelhimalaya.util.ApiErrors;
 import com.example.sabordelhimalaya.util.Roles;
@@ -85,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
                             return;
                         }
                         if (response.code() == 401) {
+                            CartRepository.get(MainActivity.this).clear();
                             com.example.sabordelhimalaya.session.SessionManager.get().clear();
                             habilitarBotones(login, register);
                             return;
@@ -95,14 +97,15 @@ public class MainActivity extends AppCompatActivity {
                         }
                         UserProfile profile = response.body();
                         if (!Roles.esCliente(profile.rol)) {
+                            CartRepository.get(MainActivity.this).clear();
                             com.example.sabordelhimalaya.session.SessionManager.get().clear();
                             habilitarBotones(login, register);
                             mostrarMensaje(getString(R.string.error_solo_clientes));
                             return;
                         }
-                        com.example.sabordelhimalaya.session.SessionManager.get().updateProfile(
-                                profile.usuarioId, profile.nombre,
-                                profile.correoElectronico, profile.rol);
+                        com.example.sabordelhimalaya.session.SessionManager.get().saveProfile(
+                                profile.usuarioId, profile.nombre, profile.login,
+                                profile.correoElectronico, profile.rol, profile.direccion);
                         startActivity(new Intent(MainActivity.this, Principal2.class));
                         finish();
                     }

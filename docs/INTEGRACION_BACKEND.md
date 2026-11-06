@@ -36,67 +36,58 @@ Guía de contexto y contrato para conectar la aplicación Android de clientes
 
 ## 1. Estado actual de la app Android
 
-La app está construida en **Java + XML** con arquitectura MVC:
+> **Actualización:** la integración descrita en este documento ya está
+> implementada en el código actual. Las secciones siguientes se conservan como
+> contrato de referencia y criterios de aceptación.
+
+La app está construida en **Java + XML** con arquitectura MVC y una capa de
+red añadida:
 
 ```text
 app/src/main/java/com/example/sabordelhimalaya/
-├── controller/   # Activities: MainActivity, InicioSesion, RegistroUsuario,
-│                 # ActivacionCuenta, Principal2, Cesta, Pedidos
-├── model/        # Categoria, Plato, MenuDiario, Pedido, Usuario, EstadoPedidos
+├── controller/   # MainActivity, InicioSesion, RegistroUsuario,
+│                 # ActivacionCuenta, Principal2, Cesta, Pedidos,
+│                 # DetallePedido, Perfil, Menus, PlatoDetalle, MenuDetalle
+├── model/
+│   ├── dto/      # DTOs del backend
+│   ├── remote/   # ApiClient y ApiService (Retrofit + Gson)
+│   └── ...       # Categoria, Plato, Menu, Pedido, LineaPedido, CartRepository
+├── session/      # SessionManager (token + perfil)
+├── util/         # ApiErrors, Formatters, ImageUrls, Roles
 └── view/         # Vistas y ajustes de presentación
 ```
 
 ### Qué hace hoy
 
-- **Bienvenida (`MainActivity`)**: pantalla inicial con botones de login y
-  registro.
-- **Login (`InicioSesion`)**: formulario visual. Al pulsar “Iniciar sesión”
-  navega directamente a la carta, sin validar credenciales ni llamar al
-  backend.
-- **Registro (`RegistroUsuario`)**: formulario visual. Al pulsar “Registrarse”
-  navega a la pantalla de activación, sin llamar al backend.
-- **Activación (`ActivacionCuenta`)**: formulario visual de código. Al enviar
-  vuelve al inicio; “Reenviar código” muestra un aviso de que aún no está
-  disponible.
-- **Carta (`Principal2`)**: muestra categorías y secciones generadas desde un
-  `enum` local. Los platos son datos estáticos; no vienen de la API.
-- **Cesta (`Cesta`)**: solo tiene el estado vacío “Añade artículos a tu
-  pedido”. No hay carrito real.
-- **Pedidos (`Pedidos`)**: solo tiene el estado vacío “Aún no tiene pedidos”.
-  No hay listado ni seguimiento.
+- **Bienvenida (`MainActivity`)**: valida la sesión guardada con `/auth/me` y
+  bloquea el acceso a roles distintos de `CLIENTE`.
+- **Login, registro y activación**: llamadas reales a `/auth/login`,
+  `/auth/register`, `/auth/activate` y `/auth/resend-code`.
+- **Carta (`Principal2`)**: categorías, platos y menú del día desde la API.
+- **Cesta (`Cesta`)**: carrito local con cantidades, dirección, vista previa
+  del servidor y creación o modificación de pedidos.
+- **Pedidos (`Pedidos`)**: listado real de `/orders/my`.
+- **Detalle (`DetallePedido`)**: seguimiento con polling, cancelación y aviso
+  de cargo fuera de plazo.
+- **Perfil (`Perfil`)**: datos de la sesión, dirección y cierre de sesión.
 - **Navegación inferior**: Carta, Cesta y Pedidos.
 
-Los propios textos de la app lo confirman:
+### Pendientes conocidos
 
-- `activation_pending`: “Pantalla de prueba: el envío y la verificación de
-  códigos aún no están disponibles.”
-- `registration_pending`: “El registro de usuarios aún no está disponible.”
+- Cifrado del token en el dispositivo (`EncryptedSharedPreferences`/Keystore).
+- Restringir el tráfico HTTP sin cifrar a entornos de desarrollo.
+- Tests automatizados de la capa de red, sesión y carrito.
+- La documentación de `arquitectura.md` puede ampliarse con la capa remota.
 
-### Qué no existe todavía
+### Modelos
 
-- Capa de red (no hay Retrofit, OkHttp ni llamadas HTTP).
-- Permiso `INTERNET` en `AndroidManifest.xml`.
-- URL base de la API ni configuración de entorno.
-- DTOs de petición/respuesta del backend.
-- Sesión: no se guarda token, ni usuario, ni rol.
-- Carrito real.
-- Listado, creación, modificación, cancelación y seguimiento de pedidos.
-- Manejo de errores HTTP y de red.
-- Validación de formularios contra las reglas del backend.
-
-### Modelos actuales que hay que adaptar
-
-| Modelo actual | Problema                                                                 |
-| ------------- | ------------------------------------------------------------------------ |
-| `Categoria`   | Solo tiene 6 valores; el backend tiene 10 categorías fijas.              |
-| `MenuDiario`  | Estructura fija (entrantes/principales/postres/bebidas); el backend usa una colección libre de productos. |
-| `Pedido`      | `idPedido` es `int`; el backend usa `UUID` en `String`.                   |
-| `Plato`       | `precio` es `double`; el backend usa `BigDecimal` (número JSON).          |
-| `Usuario`     | Guarda `contrasena` en claro; la app nunca debe almacenar la contraseña.  |
+Los modelos actuales ya usan `String` para UUID, `BigDecimal` para importes,
+`LocalDate`/`LocalDateTime` para fechas y una colección libre de productos para
+los menús. La contraseña no se guarda en la sesión.
 
 ---
 
-## 2. Qué tiene que implementar la app
+## 2. Alcance que debe cumplir la app
 
 La app Android es **exclusivamente para clientes**. Debe cubrir:
 
@@ -351,7 +342,8 @@ body **no acepta rol**.
   "usuarioId": "uuid",
   "nombre": "Juan Pérez",
   "correoElectronico": "juan@test.com",
-  "rol": "CLIENTE"
+  "rol": "CLIENTE",
+  "direccion": "Calle Mayor 123, Madrid"
 }
 ```
 
@@ -394,7 +386,8 @@ Activa la cuenta con el código de 6 dígitos.
   "usuarioId": "uuid",
   "nombre": "Juan Pérez",
   "correoElectronico": "juan@test.com",
-  "rol": "CLIENTE"
+  "rol": "CLIENTE",
+  "direccion": "Calle Mayor 123, Madrid"
 }
 ```
 
@@ -443,7 +436,8 @@ Activa la cuenta con el código de 6 dígitos.
   "usuarioId": "uuid",
   "nombre": "Juan Pérez",
   "correoElectronico": "juan@test.com",
-  "rol": "CLIENTE"
+  "rol": "CLIENTE",
+  "direccion": "Calle Mayor 123, Madrid"
 }
 ```
 
@@ -469,7 +463,8 @@ Requiere token. Sirve para restaurar la sesión al abrir la app.
   "nombre": "Juan Pérez",
   "login": "juanperez",
   "correoElectronico": "juan@test.com",
-  "rol": "CLIENTE"
+  "rol": "CLIENTE",
+  "direccion": "Calle Mayor 123, Madrid"
 }
 ```
 
@@ -994,8 +989,8 @@ RegisterRequest        { nombre, direccion, correoElectronico, login, contrasena
 ActivateRequest        { correoElectronico, codigo }
 LoginRequest           { login, contrasena }
 ResendCodeRequest      { correoElectronico }
-AuthResponse           { mensaje, token, usuarioId, nombre, correoElectronico, rol }
-UserProfile            { usuarioId, nombre, login, correoElectronico, rol }
+AuthResponse           { mensaje, token, usuarioId, nombre, correoElectronico, rol, direccion }
+UserProfile            { usuarioId, nombre, login, correoElectronico, rol, direccion }
 
 CategoryResponse       { numero, nombre, descripcion }
 DishResponse           { id, nombre, descripcion, imagenUrl, categoria, categoriaNombre, precio, disponible }
@@ -1036,7 +1031,7 @@ OrderPreviewResponse   { clienteId, direccionEntrega, items, importeTotal }
 - **`Categoria`**: usar la respuesta de `/catalog/categories` o ampliar el
   enum a las 10 categorías reales.
 - **`Usuario`**: eliminar `contrasena` del modelo de sesión. Guardar solo
-  `usuarioId`, `nombre`, `login`, `correoElectronico` y `rol`.
+  `usuarioId`, `nombre`, `login`, `correoElectronico`, `rol` y `direccion`.
 
 ---
 
@@ -1147,7 +1142,7 @@ funciona bien.
 ### `SessionManager`
 
 - Guardar/leer/borrar token.
-- Guardar perfil (`usuarioId`, `nombre`, `login`, `correo`, `rol`).
+- Guardar perfil (`usuarioId`, `nombre`, `login`, `correo`, `rol`, `direccion`).
 - `isLoggedIn()` y `isCliente()`.
 - Al arrancar: si hay token, llamar a `/auth/me`; si falla o el rol no es
   `CLIENTE`, limpiar y mostrar login.
@@ -1368,23 +1363,22 @@ pero conviene tenerlas presentes:
 3. **No hay idempotencia en `POST /orders`.** Un doble toque o un reintento de
    red puede crear dos pedidos. Deshabilitar el botón mientras se envía y no
    reintentar automáticamente.
-4. **Generación del número de pedido sin bloqueo.** El backend calcula
-   “último + 1”. Dos pedidos concurrentes podrían chocar con la restricción
-   única. La app debe manejar `409 CONFLICTO_DATOS` o un `500` puntual y
-   permitir reintentar la confirmación.
-5. **Precio del menú con productos ocultos.** Si un menú no tiene precio
-   personalizado y algún producto está oculto, la vista pública puede mostrar
-   la suma de los productos visibles mientras el pedido cobra la suma de todos
-   los productos del menú. **El total fiable es el de `POST /orders/preview`.**
-   La app debe previsualizar antes de confirmar.
-6. **Historial no congelado al 100 %.** El precio unitario sí se congela, pero
-   el nombre y los componentes se leen de las entidades actuales. Si se edita
-   un menú después, un pedido antiguo puede mostrar componentes nuevos.
+4. **Generación del número de pedido.** La creación se serializa en una
+   instancia para evitar números duplicados en la misma JVM. Para varias
+   instancias haría falta una secuencia o un bloqueo de base de datos. La app
+   debe seguir manejando `409 CONFLICTO_DATOS` o un `500` puntual.
+5. **Precio del menú.** La vista pública y el cobro usan el mismo precio: si no
+   hay precio personalizado, se suman solo los productos visibles. Aun así, la
+   app debe previsualizar antes de confirmar.
+6. **Historial de pedidos.** El nombre, los componentes y el precio unitario se
+   congelan al confirmar. Editar un producto o menú después no cambia el detalle
+   de un pedido antiguo.
 7. **Facturación por fecha de creación** (no afecta a la app de cliente, pero
    explica por qué no debe usar fechas de entrega para nada).
 8. **Zona horaria del servidor.** El backend usa `LocalDate.now()` para “hoy”,
-   menú del día y rangos. En Docker suele ser UTC. Si el restaurante opera en
-   otra zona, los cortes de día pueden no coincidir con la fecha local.
+   menú del día y rangos. El `docker-compose` fija `TZ` (por defecto
+   `Europe/Madrid`); si se despliega en otra zona, hay que ajustar `TZ` para que
+   los cortes de día coincidan con la fecha local.
 9. **Sin paginación.** `GET /orders/my` devuelve todos los pedidos del cliente.
 10. **Sin edición de perfil ni cambio de contraseña.** No hay endpoints para
     actualizar nombre, dirección o contraseña. La dirección se fija en el

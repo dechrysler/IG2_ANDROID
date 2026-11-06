@@ -11,6 +11,7 @@ import androidx.activity.SystemBarStyle;
 
 import com.example.sabordelhimalaya.BuildConfig;
 import com.example.sabordelhimalaya.R;
+import com.example.sabordelhimalaya.model.CartRepository;
 import com.example.sabordelhimalaya.model.dto.AuthResponse;
 import com.example.sabordelhimalaya.model.dto.ActivateRequest;
 import com.example.sabordelhimalaya.model.dto.ResendCodeRequest;
@@ -121,6 +122,7 @@ public class ActivacionCuenta extends BaseActivity {
                 }
                 AuthResponse auth = response.body();
                 if (!Roles.esCliente(auth.rol)) {
+                    CartRepository.get(ActivacionCuenta.this).clear();
                     session().clear();
                     mostrarSoloClientes();
                     return;
@@ -129,9 +131,16 @@ public class ActivacionCuenta extends BaseActivity {
                     showMessage(getString(R.string.error_generic));
                     return;
                 }
+                // Es una cuenta recién activada: no debe heredar una cesta ni
+                // una dirección de otra sesión.
+                CartRepository.get(ActivacionCuenta.this).clear();
+                session().clear();
                 session().saveToken(auth.token);
+                String direccion = auth.direccion != null && !auth.direccion.isEmpty()
+                        ? auth.direccion
+                        : session().getDireccion();
                 session().saveProfile(auth.usuarioId, auth.nombre, login,
-                        auth.correoElectronico, auth.rol, session().getDireccion());
+                        auth.correoElectronico, auth.rol, direccion);
                 goToCarta();
             }
 

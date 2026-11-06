@@ -69,10 +69,7 @@ public class Cesta extends BaseActivity implements CestaView.Listener {
     @Override
     public void onReview() {
         String direccion = view.getDireccion();
-        if (direccion.isEmpty()) {
-            view.showDireccionError(getString(R.string.basket_address_required));
-            return;
-        }
+        // Si se deja vacía, el backend usa la dirección del perfil del cliente.
         view.showDireccionError(null);
         view.setBusy(true);
         api().preview(cart.toRequest(direccion)).enqueue(new Callback<OrderPreviewResponse>() {
@@ -116,10 +113,6 @@ public class Cesta extends BaseActivity implements CestaView.Listener {
             return;
         }
         String direccion = view.getDireccion();
-        if (direccion.isEmpty()) {
-            view.showDireccionError(getString(R.string.basket_address_required));
-            return;
-        }
 
         view.setBusy(true);
         enviando = true;

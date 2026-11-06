@@ -51,7 +51,7 @@
     <string name="activation_sending">Activando…</string>
     <string name="activation_resending">Reenviando…</string>
     <string name="activation_code_invalid">Introduce el código de 6 dígitos.</string>
-    <string name="activation_dev_hint">Modo desarrollo: el código aparece en los logs del backend, en Backend-Restaurant-IS2/tmp/codigo-activacion-tmp.txt o en Mailpit (http://localhost:8025).</string>
+    <string name="activation_dev_hint">Modo desarrollo: el código aparece en los logs del backend, en Backend-Restaurant-IS2/tmp/codigo-activacion-tmp.txt o en Mailpit (http://10.0.2.2:8025 en el emulador o la IP del PC en el móvil).</string>
     <string name="activation_email_missing">No se ha indicado el correo. Vuelve a registrarte.</string>
 
     <!-- Carta -->

@@ -8,6 +8,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.activity.SystemBarStyle;
 
 import com.example.sabordelhimalaya.R;
+import com.example.sabordelhimalaya.model.CartRepository;
 import com.example.sabordelhimalaya.model.dto.AuthResponse;
 import com.example.sabordelhimalaya.model.dto.LoginRequest;
 import com.example.sabordelhimalaya.session.SessionManager;
@@ -74,6 +75,7 @@ public class InicioSesion extends BaseActivity {
                 AuthResponse auth = response.body();
                 // Regla crítica: esta app es solo para CLIENTE.
                 if (!Roles.esCliente(auth.rol)) {
+                    CartRepository.get(InicioSesion.this).clear();
                     session().clear();
                     mostrarSoloClientes();
                     return;
@@ -82,9 +84,20 @@ public class InicioSesion extends BaseActivity {
                     showMessage(getString(R.string.error_generic));
                     return;
                 }
+                // Si esta sesión es de otro usuario, no arrastrar su cesta.
+                String usuarioAnterior = session().getUsuarioId();
+                if (usuarioAnterior == null || !usuarioAnterior.equals(auth.usuarioId)) {
+                    CartRepository.get(InicioSesion.this).clear();
+                    // Evita conservar la dirección del usuario anterior si el
+                    // backend antiguo no devolviera direccion en el login.
+                    session().clear();
+                }
                 SessionManager.get().saveToken(auth.token);
+                String direccion = auth.direccion != null && !auth.direccion.isEmpty()
+                        ? auth.direccion
+                        : session().getDireccion();
                 SessionManager.get().saveProfile(auth.usuarioId, auth.nombre, login,
-                        auth.correoElectronico, auth.rol, session().getDireccion());
+                        auth.correoElectronico, auth.rol, direccion);
                 goToCarta();
             }
 

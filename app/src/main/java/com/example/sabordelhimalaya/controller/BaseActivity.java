@@ -5,6 +5,7 @@ import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.sabordelhimalaya.R;
+import com.example.sabordelhimalaya.model.CartRepository;
 import com.example.sabordelhimalaya.model.remote.ApiClient;
 import com.example.sabordelhimalaya.model.remote.ApiService;
 import com.example.sabordelhimalaya.session.SessionManager;
@@ -60,6 +61,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected void goToLogin() {
+        // La cesta es local: no debe sobrevivir a un cambio de usuario o a una
+        // sesión caducada. Si no, otro cliente podría heredar los artículos.
+        CartRepository.get(this).clear();
         Intent intent = new Intent(this, InicioSesion.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);

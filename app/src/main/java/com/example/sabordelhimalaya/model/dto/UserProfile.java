@@ -7,4 +7,5 @@ public class UserProfile {
     public String login;
     public String correoElectronico;
     public String rol;
+    public String direccion;
 }
