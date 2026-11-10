@@ -1,6 +1,5 @@
 package com.example.sabordelhimalaya.model;
 
-/** Opción elegida dentro de una sección del menú. */
 public class OpcionSeleccionada {
     private final String id;
     private final String nombre;

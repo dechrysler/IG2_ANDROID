@@ -23,7 +23,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-/** Controlador de entrada: valida la sesión guardada antes de mostrar la bienvenida. */
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_RED_LOCAL = 1001;
     private static final String PERMISO_RED_LOCAL = "android.permission.ACCESS_LOCAL_NETWORK";

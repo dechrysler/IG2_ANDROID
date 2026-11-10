@@ -2,9 +2,6 @@ plugins {
     alias(libs.plugins.android.application)
 }
 
-// URL base de la API. Se puede sobrescribir sin tocar código:
-//   .\gradlew.bat assembleDebug -PAPI_BASE_URL=http://192.168.1.50:8080/api
-// Por defecto apunta al equipo anfitrión desde el emulador Android.
 val apiBaseUrl = (project.findProperty("API_BASE_URL") as String?)
     ?: "http://10.0.2.2:8080/api"
 

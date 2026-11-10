@@ -12,10 +12,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Cesta local del cliente. Vive en memoria y se persiste en SharedPreferences
- * privado para sobrevivir a cambios de pantalla y reinicios suaves.
- */
 public final class CartRepository {
     private static final String PREFS = "sabor_cart";
     private static final String KEY_ITEMS = "items";
@@ -66,7 +62,6 @@ public final class CartRepository {
         return total;
     }
 
-    /** Cestas antiguas pueden contener menús sin las cuatro opciones. */
     public boolean tieneMenusSinSeleccion() {
         for (CartItem item : items) {
             if (item.esMenu() && !item.tieneSeleccionCompleta()) {
@@ -142,7 +137,6 @@ public final class CartRepository {
         save();
     }
 
-    /** Carga un pedido existente para la pantalla de modificación (PUT). */
     public void loadForEdit(Pedido pedido) {
         items.clear();
         for (LineaPedido linea : pedido.getItems()) {
@@ -246,7 +240,6 @@ public final class CartRepository {
         }
     }
 
-    /** Línea de la cesta. Campos mutables para que Gson los persista. */
     public static class CartItem {
         public String tipo;
         public String id;

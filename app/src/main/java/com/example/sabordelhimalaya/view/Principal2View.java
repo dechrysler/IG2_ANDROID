@@ -107,7 +107,7 @@ public final class Principal2View {
 
     public void showLoading() {
         if (!categoryContainers.isEmpty()) {
-            // En una recarga silenciosa se conserva el contenido ya mostrado.
+
             state.setVisibility(View.GONE);
             return;
         }
@@ -138,7 +138,6 @@ public final class Principal2View {
         categoryContainers.clear();
         categoryTitles.clear();
 
-        // Conserva el botón "Menú diario" y elimina las pestañas anteriores.
         for (int i = categoryButtons.getChildCount() - 1; i >= 0; i--) {
             View child = categoryButtons.getChildAt(i);
             if (child != dailyButton) {

@@ -168,7 +168,6 @@ public final class MenuDetalleView {
         return cantidad;
     }
 
-    /** Devuelve null si aún falta alguna de las cuatro secciones. */
     public SeleccionMenu getSeleccion() {
         if (!seleccionCompleta()) {
             return null;

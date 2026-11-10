@@ -9,7 +9,6 @@ public class MenuResponse {
     public String id;
     public String nombre;
     public String descripcion;
-    /** Campo heredado; la app usa las cuatro secciones. */
     public List<DishResponse> productos;
     public BigDecimal precio;
     public BigDecimal precioPersonalizado;

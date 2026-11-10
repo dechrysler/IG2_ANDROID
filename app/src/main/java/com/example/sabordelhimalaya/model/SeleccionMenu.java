@@ -1,6 +1,5 @@
 package com.example.sabordelhimalaya.model;
 
-/** Selección exacta de un menú: un entrante, un principal, un postre y una bebida. */
 public class SeleccionMenu {
     private final OpcionSeleccionada entrante;
     private final OpcionSeleccionada principal;

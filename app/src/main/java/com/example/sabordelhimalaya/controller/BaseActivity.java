@@ -14,7 +14,6 @@ import com.google.android.material.snackbar.Snackbar;
 
 import retrofit2.Response;
 
-/** Base de las pantallas de cliente: sesión, 401 y mensajes comunes. */
 public abstract class BaseActivity extends AppCompatActivity {
 
     protected ApiService api() {
@@ -36,11 +35,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         return ApiErrors.message(response);
     }
 
-    /**
-     * Gestiona un 401: borra la sesión y vuelve al login.
-     *
-     * @return true si la respuesta era 401 y ya se ha redirigido.
-     */
     protected boolean handle401(Response<?> response) {
         if (response != null && response.code() == 401) {
             session().clear();
@@ -50,7 +44,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         return false;
     }
 
-    /** Comprueba que hay sesión de CLIENTE. Si no, vuelve al login. */
     protected boolean ensureCliente() {
         if (!session().isLoggedIn() || !session().isCliente()) {
             session().clear();
@@ -61,8 +54,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected void goToLogin() {
-        // La cesta es local: no debe sobrevivir a un cambio de usuario o a una
-        // sesión caducada. Si no, otro cliente podría heredar los artículos.
+
         CartRepository.get(this).clear();
         Intent intent = new Intent(this, InicioSesion.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

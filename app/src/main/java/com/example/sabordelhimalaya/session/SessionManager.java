@@ -3,13 +3,6 @@ package com.example.sabordelhimalaya.session;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-/**
- * Sesión del cliente. Solo se guarda el token y el perfil público.
- * Nunca se almacena la contraseña.
- *
- * Se usa SharedPreferences privado de la app (MODE_PRIVATE). El token no se
- * expone fuera del proceso y se borra al cerrar sesión o al recibir un 401.
- */
 public final class SessionManager {
     private static final String PREFS = "sabor_session";
     private static final String KEY_TOKEN = "token";

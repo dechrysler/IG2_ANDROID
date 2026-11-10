@@ -23,7 +23,6 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/** Instancia única de Retrofit, OkHttp y Gson para toda la app. */
 public final class ApiClient {
     private static final DateTimeFormatter DATE_TIME = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
     private static final DateTimeFormatter DATE = DateTimeFormatter.ISO_LOCAL_DATE;

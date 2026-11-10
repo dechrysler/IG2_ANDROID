@@ -4,7 +4,6 @@
     <string name="welcome_title_first_line">Sabor del</string>
     <string name="welcome_title_second_line">Himalaya</string>
 
-    <!-- Acciones generales -->
     <string name="action_login">Iniciar sesión</string>
     <string name="action_register">Registrarse</string>
     <string name="action_cancel">Cancelar</string>
@@ -20,13 +19,11 @@
     <string name="error_session">Tu sesión ha caducado. Vuelve a iniciar sesión.</string>
     <string name="logout_confirm">¿Quieres cerrar la sesión?</string>
 
-    <!-- Login -->
     <string name="login_title">Inicio de sesión</string>
     <string name="login_username_label">Correo o usuario</string>
     <string name="login_no_account">¿No tienes cuenta? Regístrate</string>
     <string name="login_required_fields">Introduce tu usuario y contraseña.</string>
 
-    <!-- Registro -->
     <string name="registration_title">Registro</string>
     <string name="registration_name">Nombre</string>
     <string name="registration_username">Nombre de usuario</string>
@@ -39,7 +36,6 @@
     <string name="registration_password_mismatch">Las contraseñas no coinciden.</string>
     <string name="registration_field_too_long">El campo supera la longitud permitida.</string>
 
-    <!-- Activación -->
     <string name="activation_title">Activa tu cuenta</string>
     <string name="activation_description">Hemos enviado a tu correo un código para activar tu cuenta.</string>
     <string name="activation_email_label">Correo de la cuenta</string>
@@ -54,7 +50,6 @@
     <string name="activation_dev_hint">Modo desarrollo: el código aparece en los logs del backend, en Backend-Restaurant-IS2/tmp/codigo-activacion-tmp.txt o en Mailpit (http://10.0.2.2:8025 en el emulador o la IP del PC en el móvil).</string>
     <string name="activation_email_missing">No se ha indicado el correo. Vuelve a registrarte.</string>
 
-    <!-- Carta -->
     <string name="category_daily">Menú diario</string>
     <string name="nav_menu">Carta</string>
     <string name="nav_basket">Cesta</string>
@@ -67,7 +62,6 @@
     <string name="carta_menu_components">Incluye: %1$s</string>
     <string name="carta_logout">Salir</string>
 
-    <!-- Cesta -->
     <string name="basket_empty_title">Añade artículos a tu pedido</string>
     <string name="basket_empty_description">Explora la carta y añade productos o el menú del día.</string>
     <string name="basket_title">Tu cesta</string>
@@ -91,7 +85,6 @@
     <string name="basket_edit_title">Modificar pedido</string>
     <string name="basket_preview_empty">La cesta está vacía.</string>
 
-    <!-- Pedidos -->
     <string name="orders_empty_title">Aún no tiene pedidos</string>
     <string name="orders_empty_description">Cuando confirmes un pedido aparecerá aquí.</string>
     <string name="orders_title">Mis pedidos</string>
@@ -102,7 +95,6 @@
     <string name="orders_total">Total: %1$s</string>
     <string name="orders_units">%1$d artículos</string>
 
-    <!-- Detalle / seguimiento -->
     <string name="detail_title">Detalle del pedido</string>
     <string name="detail_loading">Cargando pedido…</string>
     <string name="detail_error">No se ha podido cargar el pedido.</string>
@@ -122,16 +114,15 @@
     <string name="detail_cancelled">Pedido cancelado.</string>
     <string name="detail_eta">Entrega estimada: %1$s</string>
     <string name="detail_eta_passed">Entrega estimada: ya debería haber llegado</string>
-    <string name="detail_delivery_time">Entregado al repartidor: %1$s</string>
+    <string name="detail_delivery_time">Enviado al repartidor: %1$s</string>
     <string name="detail_observations">Observaciones: %1$s</string>
     <string name="detail_status">Estado</string>
     <string name="detail_updated">Actualizado: %1$s</string>
     <string name="detail_step_received">Recibido</string>
     <string name="detail_step_preparing">En preparación</string>
     <string name="detail_step_ready">Listo</string>
-    <string name="detail_step_delivered">Entregado</string>
+    <string name="detail_step_delivered">Enviado</string>
 
-    <!-- Menús -->
     <string name="menus_title">Menús</string>
     <string name="menus_subtitle">Elige el menú que más te apetezca</string>
     <string name="menus_loading">Cargando menús…</string>
@@ -162,7 +153,6 @@
     <string name="plato_add_total">Añadir %1$d · %2$s</string>
     <string name="plato_added">Producto añadido a la cesta.</string>
 
-    <!-- Perfil -->
     <string name="carta_profile">Perfil</string>
     <string name="profile_title">Mi perfil</string>
     <string name="profile_role">Cliente</string>
@@ -174,7 +164,6 @@
     <string name="profile_back">Volver a la carta</string>
     <string name="profile_logout_confirm">¿Seguro que quieres cerrar la sesión?</string>
 
-    <!-- Confirmación de pedido -->
     <string name="order_success_title">¡Pedido confirmado!</string>
     <string name="order_success_updated">Pedido actualizado</string>
     <string name="order_success_message">Hemos recibido tu pedido y ya estamos preparándolo.</string>
@@ -185,7 +174,6 @@
     <string name="order_success_tracking">Ver seguimiento</string>
     <string name="order_success_continue">Seguir pidiendo</string>
 
-    <!-- Barra de pago de la cesta -->
     <string name="basket_checkout_estimated">Total estimado</string>
     <string name="basket_checkout_server">Total del pedido</string>
     <string name="basket_edit_cart">Editar cesta</string>

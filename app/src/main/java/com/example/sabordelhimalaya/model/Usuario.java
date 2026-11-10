@@ -1,6 +1,5 @@
 package com.example.sabordelhimalaya.model;
 
-/** Usuario de sesión. No contiene contraseña ni hash. */
 public class Usuario {
     private final String usuarioId;
     private final String nombre;

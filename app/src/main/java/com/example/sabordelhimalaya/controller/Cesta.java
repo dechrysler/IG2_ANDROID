@@ -73,7 +73,7 @@ public class Cesta extends BaseActivity implements CestaView.Listener {
             return;
         }
         String direccion = view.getDireccion();
-        // Si se deja vacía, el backend usa la dirección del perfil del cliente.
+
         view.showDireccionError(null);
         view.setBusy(true);
         api().preview(cart.toRequest(direccion)).enqueue(new Callback<OrderPreviewResponse>() {
@@ -154,7 +154,7 @@ public class Cesta extends BaseActivity implements CestaView.Listener {
                     finish();
                     return;
                 }
-                // Nunca se reintenta automáticamente: se evita duplicar pedidos.
+
                 enviando = false;
                 view.setBusy(false);
                 String mensaje = ApiErrors.message(response);
@@ -194,7 +194,7 @@ public class Cesta extends BaseActivity implements CestaView.Listener {
     @Override
     protected void onDestroy() {
         if (isFinishing() && cart != null && cart.getEditingOrderId() != null) {
-            // Si se abandona la modificación, no dejar la cesta en modo edición.
+
             cart.clear();
         }
         super.onDestroy();

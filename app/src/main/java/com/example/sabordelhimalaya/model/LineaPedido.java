@@ -5,7 +5,6 @@ import com.example.sabordelhimalaya.model.dto.OrderItemResponse;
 import java.math.BigDecimal;
 import java.util.List;
 
-/** Línea (producto o menú) de un pedido. */
 public class LineaPedido {
     private final String tipo;
     private final String platoId;

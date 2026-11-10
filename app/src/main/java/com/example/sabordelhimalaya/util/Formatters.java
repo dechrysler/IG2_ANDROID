@@ -7,7 +7,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
-/** Formatos es-ES para importes, fechas y etiquetas de estado. */
 public final class Formatters {
     private static final Locale ES = Locale.forLanguageTag("es-ES");
     private static final DateTimeFormatter DATE_TIME =
@@ -52,7 +51,7 @@ public final class Formatters {
             case "LISTO":
                 return "Listo";
             case "ENTREGADO":
-                return "Entregado";
+                return "Enviado";
             default:
                 return estado;
         }

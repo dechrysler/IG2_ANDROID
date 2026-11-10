@@ -898,7 +898,7 @@ Campos importantes para la app:
 | `estado`            | Estado del seguimiento                                          |
 | `cancelacion`       | Badge de cancelado y motivo                                     |
 | `fechaHora`         | Fecha/hora del pedido                                           |
-| `fechaEntrega`      | Momento de entrega al repartidor                                |
+| `fechaEntrega`      | Momento de envío al repartidor                                  |
 | `items`             | Detalle de líneas                                               |
 | `importeTotal`      | Total a mostrar (no recalcular)                                 |
 | `modificable`       | Mostrar/ocultar botón “Modificar”                               |
@@ -922,7 +922,7 @@ LISTO ──POST /orders/{id}/deliver (Encargado)──► ENTREGADO
   en ese caso la cancelación será **con cargo**.
 - `modificable` es `true` solo en `RECIBIDO`, no cancelado y dentro de los 10
   minutos.
-- `ENTREGADO` significa “entregado al repartidor”, no recibido por el cliente.
+- `ENTREGADO` significa “enviado al repartidor”, no recibido por el cliente.
 
 La app debe usar los flags `modificable` y `cancelable` de la respuesta y
 refrescar el pedido antes de operar; no calcularlos solo con la hora local.
@@ -950,7 +950,7 @@ Recomendaciones:
 | `RECIBIDO`       | Recibido            | Neutro          |
 | `EN_PREPARACION` | En preparación      | Azafrán/ámbar   |
 | `LISTO`          | Listo               | Verde           |
-| `ENTREGADO`      | Entregado           | Verde oscuro    |
+| `ENTREGADO`      | Enviado             | Verde oscuro    |
 
 ### Cancelación
 
@@ -972,7 +972,7 @@ Recomendaciones:
 ### Stepper sugerido
 
 ```text
-[Recibido] → [En preparación] → [Listo] → [Entregado]
+[Recibido] → [En preparación] → [Listo] → [Enviado]
 ```
 
 - Marcar los estados completados.
@@ -1314,7 +1314,7 @@ Get-Content ..\..\Backend-Restaurant-IS2\tmp\codigo-activacion-tmp.txt
 10. Abrir el detalle → estado `RECIBIDO`.
 11. Desde la web de gestión/Postman, avanzar a `EN_PREPARACION` y `LISTO`.
 12. Refrescar la app (o esperar el polling) → debe reflejar los estados.
-13. Marcar entregado desde la web → la app debe mostrar `ENTREGADO` y la ETA.
+13. Marcar enviado desde la web → la app debe mostrar `ENTREGADO` y la ETA.
 14. Dentro de 10 minutos, probar modificar y cancelar.
 15. Probar cancelar después de 10 minutos (manual) → `CANCELADO_CON_CARGO`.
 
@@ -1386,7 +1386,7 @@ pero conviene tenerlas presentes:
 11. **Sin notas generales del pedido.** Solo existen observaciones de
     cancelación.
 12. **Sin pagos online.** El pedido no tiene estado de pago.
-13. **Sin seguimiento del repartidor.** `ENTREGADO` significa entregado al
+13. **Sin seguimiento del repartidor.** `ENTREGADO` significa enviado al
     repartidor; la ETA es una estimación de 30 minutos.
 14. **Sin refresh token.** El JWT dura 24 horas; al caducar hay que volver a
     iniciar sesión.

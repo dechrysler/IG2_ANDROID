@@ -5,7 +5,6 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-/** Presentación: el contenido respeta las barras y el fondo ocupa toda la pantalla. */
 public final class WelcomeView {
     private final View content;
 

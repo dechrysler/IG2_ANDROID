@@ -12,7 +12,6 @@ import java.util.Map;
 
 import retrofit2.Response;
 
-/** Interpreta los errores del backend y los traduce a mensajes de usuario. */
 public final class ApiErrors {
 
     private ApiErrors() {

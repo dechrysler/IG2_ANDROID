@@ -4,7 +4,6 @@ import com.example.sabordelhimalaya.model.dto.CategoryResponse;
 
 import java.util.Locale;
 
-/** Categoría de la carta tal y como la devuelve el backend (10 categorías fijas). */
 public class Categoria {
     private final int numero;
     private final String nombre;
@@ -32,7 +31,6 @@ public class Categoria {
         return descripcion;
     }
 
-    /** Texto legible para la pestaña: ENTRANTES -> Entrantes. */
     public String getNombreVisible() {
         if (nombre == null || nombre.isEmpty()) {
             return descripcion != null ? descripcion : "";

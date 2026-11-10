@@ -131,8 +131,7 @@ public class ActivacionCuenta extends BaseActivity {
                     showMessage(getString(R.string.error_generic));
                     return;
                 }
-                // Es una cuenta recién activada: no debe heredar una cesta ni
-                // una dirección de otra sesión.
+
                 CartRepository.get(ActivacionCuenta.this).clear();
                 session().clear();
                 session().saveToken(auth.token);

@@ -25,7 +25,6 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
-/** Contrato REST del backend de Sabor del Himalaya. */
 public interface ApiService {
 
     @POST("auth/register")

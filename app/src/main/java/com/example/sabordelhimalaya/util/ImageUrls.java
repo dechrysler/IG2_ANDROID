@@ -2,7 +2,6 @@ package com.example.sabordelhimalaya.util;
 
 import com.example.sabordelhimalaya.BuildConfig;
 
-/** Construye URLs absolutas de imágenes a partir de la base de la API. */
 public final class ImageUrls {
     private ImageUrls() {
     }

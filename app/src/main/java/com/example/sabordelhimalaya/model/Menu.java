@@ -8,7 +8,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Menú diario estructurado: entrantes, principales, postres y bebidas. */
 public class Menu {
     private final String id;
     private final String nombre;
@@ -96,7 +95,6 @@ public class Menu {
         return fechaMenuDelDia;
     }
 
-    /** Todos los platos, útil para imágenes y resúmenes. */
     public List<Plato> getTodosLosPlatos() {
         List<Plato> todos = new ArrayList<>();
         todos.addAll(entrantes);

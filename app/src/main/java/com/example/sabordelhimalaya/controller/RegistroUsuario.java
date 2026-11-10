@@ -162,7 +162,7 @@ public class RegistroUsuario extends BaseActivity {
                     showMessage(getString(R.string.error_solo_clientes));
                     return;
                 }
-                // Un registro nuevo no debe heredar la cesta de otra sesión.
+
                 CartRepository.get(RegistroUsuario.this).clear();
                 session().saveDireccion(vDireccion);
                 Intent intent = new Intent(RegistroUsuario.this, ActivacionCuenta.class);

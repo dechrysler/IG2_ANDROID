@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Pedido del cliente tal y como lo devuelve el backend. */
 public class Pedido {
     private final String id;
     private final String numeroPedido;

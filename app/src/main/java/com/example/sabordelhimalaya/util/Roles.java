@@ -6,7 +6,6 @@ import com.example.sabordelhimalaya.R;
 
 import retrofit2.Response;
 
-/** Reglas locales obligatorias sobre roles y sesión. */
 public final class Roles {
     public static final String CLIENTE = "CLIENTE";
 

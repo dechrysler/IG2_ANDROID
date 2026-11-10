@@ -4,7 +4,6 @@ import com.example.sabordelhimalaya.model.dto.DishResponse;
 
 import java.math.BigDecimal;
 
-/** Producto de la carta. */
 public class Plato {
     private final String id;
     private final String nombre;

@@ -58,7 +58,6 @@ public class PlatoDetalle extends BaseActivity {
                 precio = new BigDecimal(precioTexto);
             }
         } catch (NumberFormatException ignored) {
-            // El precio se muestra como texto si no se pudo convertir.
         }
         plato = new Plato(id, nombre, descripcion, imagen, 0, categoria, precio, true);
 
